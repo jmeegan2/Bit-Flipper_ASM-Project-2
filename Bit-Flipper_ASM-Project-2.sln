@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bit-Flipper_ASM-Project-2", "Bit-Flipper_ASM-Project-2.vcxproj", "{B42858FC-5061-46FB-A138-00FE971BE71B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Debug|x64.ActiveCfg = Debug|x64
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Debug|x64.Build.0 = Debug|x64
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Debug|x86.ActiveCfg = Debug|Win32
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Debug|x86.Build.0 = Debug|Win32
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Release|x64.ActiveCfg = Release|x64
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Release|x64.Build.0 = Release|x64
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Release|x86.ActiveCfg = Release|Win32
+		{B42858FC-5061-46FB-A138-00FE971BE71B}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {163B72B3-02F7-40EF-A892-699E3ABA5E50}
+	EndGlobalSection
+EndGlobal
