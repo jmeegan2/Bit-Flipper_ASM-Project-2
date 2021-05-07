@@ -20,15 +20,26 @@ ExitProcess PROTO, dwExitCode:DWORD
 
 ; DATA SEGMENT
 .data
-HelloByte	Byte "Hello",0
+;HelloByte	Byte "Hello",0
+ShowNewline		TEXTEQU	<CALL Crlf>
+
+
+
+cornerRight					EQU		187d	; 187 is the base-10 ASCII code for open ended right corner 
+
+
+
+cornerR			BYTE	1 DUP(cornerRight), 0
+
 ; CODE SEGMENT
 
 
 .code
 main PROC
 
-mov edx, offset HelloByte
-call writestring
+;mov edx, offset HelloByte
+;call writestring
+
 
 main endp
  invoke ExitProcess, 0
