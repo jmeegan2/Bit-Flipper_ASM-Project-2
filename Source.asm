@@ -122,21 +122,26 @@ mov edx, offset tConnector
 call writestring
 mov edx, offset flatlines
 call writestring
-mov edx, offset tConnector
-call writestring
-mov edx, offset flatlines
 call writestring
 mov edx, offset tConnector
 call writestring
 mov edx, offset flatlines
 call writestring
-mov edx, offset tConnector
-call writestring
-mov edx, offset flatlines
 call writestring
 mov edx, offset tConnector
 call writestring
 mov edx, offset flatlines
+call writestring
+call writestring
+mov edx, offset tConnector
+call writestring
+mov edx, offset flatlines
+call writestring
+call writestring
+mov edx, offset tConnector
+call writestring
+mov edx, offset flatlines
+call writestring
 call writestring
 mov edx, offset cornerR
 call writestring
@@ -154,6 +159,84 @@ call writestring
 mov edx, offset straightLineD
 call writestring
 
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring					;Value Here
+call writestring
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring			;Value Here
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring		;Value here
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring
 
 
 main endp
