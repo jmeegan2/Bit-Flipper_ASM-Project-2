@@ -59,9 +59,9 @@ numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one
 
 
 
-BitPosition		BYTE " BIT POSITION", 0
+BitPosition		BYTE " BIT POSITION ", 0
 cornerL			BYTE	1	DUP(cornerLeft), 0
-flatLines		BYTE	3 DUP(theDoubleLinesSymbol), 0
+flatLines		BYTE	2 DUP(theDoubleLinesSymbol), 0
 tConnector		BYTE	1 DUP(tShapeConnector),0
 cornerR			BYTE	1 DUP(cornerRight), 0
 straightLineD	BYTE    1 DUP(straightLinesDown), 0
@@ -95,15 +95,11 @@ call writestring
 
 mov edx, offset flatlines
 call writestring
-mov edx, offset flatlines
 call writestring
-mov edx, offset flatlines
 call writestring
-mov edx, offset flatlines
 call writestring
-mov edx, offset flatlines
 call writestring
-mov edx, offset flatlines
+call writestring
 call writestring
 
 MOV EDX, OFFSET tConnector
@@ -111,13 +107,16 @@ MOV EDX, OFFSET tConnector
 
 mov edx, offset flatlines
 call writestring
-mov edx, offset tConnector
-call writestring
-mov edx, offset flatlines
 call writestring
 mov edx, offset tConnector
 call writestring
 mov edx, offset flatlines
+call writestring
+call writestring
+mov edx, offset tConnector
+call writestring
+mov edx, offset flatlines
+call writestring
 call writestring
 mov edx, offset tConnector
 call writestring
