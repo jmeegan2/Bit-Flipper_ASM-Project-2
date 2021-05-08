@@ -60,6 +60,7 @@ numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one
 
 
 BitPosition		BYTE " BIT POSITION ", 0
+BitCode			BYTE "     BIT CODE ", 0
 cornerL			BYTE	1	DUP(cornerLeft), 0
 flatLines		BYTE	2 DUP(theDoubleLinesSymbol), 0
 tConnector		BYTE	1 DUP(tShapeConnector),0
@@ -317,21 +318,9 @@ call crlf
 mov edx, offset straightLineD
 call writestring 
 
-mov edx ,offset spaceC
+mov edx ,offset BitCode
 call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
-call writestring
+
 
 mov edx, offset straightLineD
 call writestring 
@@ -407,6 +396,87 @@ call writestring
 
 mov edx, offset straightLineD
 call writestring 
+call crlf
+
+;5th line of display
+
+mov edx, offset bottomCornerL
+call writestring
+
+mov edx, offset flatlines
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset InvertedTC
+call writestring
+
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset bottomCornerR
+call writestring
 
 
 
