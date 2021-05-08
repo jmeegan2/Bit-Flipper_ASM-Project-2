@@ -310,8 +310,34 @@ call writestring
 
 mov edx, offset tShapeConnectorR
 call writestring 
+call crlf
+;line 4 of display starts here
+;mov edx, offset
 
+mov edx, offset straightLineD
+call writestring 
 
+mov edx ,offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset straightLineD
+call writestring 
 
 
 
