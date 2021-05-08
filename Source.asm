@@ -58,7 +58,7 @@ numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one
 ;A strategy based around that idea is what most people develop.
 
 
-
+Number7			byte  "7", 0
 BitPosition		BYTE " BIT POSITION ", 0
 BitCode			BYTE "     BIT CODE ", 0
 cornerL			BYTE	1	DUP(cornerLeft), 0
@@ -162,8 +162,12 @@ call writestring
 
 mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset Number7
 call writestring
-call writestring					;Value Here
+
+mov edx,offset spaceC
 call writestring
 
 mov edx, offset straightLineD
