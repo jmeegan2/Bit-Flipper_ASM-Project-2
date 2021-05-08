@@ -336,8 +336,81 @@ call writestring
 mov edx, offset straightLineD
 call writestring 
 
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
 mov edx, offset straightLineD
 call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset spaceC
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset straightLineD
+call writestring 
+
+
+
+
 
 
 
