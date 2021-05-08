@@ -258,7 +258,58 @@ call writestring
 mov edx, offset flatlines
 call writestring
 call writestring
-call wri
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring 
+
+mov edx, offset flatlines
+call writestring
+call writestring
+
+mov edx, offset tShapeConnectorR
+call writestring 
 
 
 
