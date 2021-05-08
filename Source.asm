@@ -47,7 +47,7 @@ bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
 
-numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
+;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
 
 
 
@@ -58,7 +58,14 @@ numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one
 ;A strategy based around that idea is what most people develop.
 
 
-Number7			byte  "7", 0
+number7			byte  "7", 0
+number6			byte  "6", 0
+number5         byte  "5", 0
+number4         byte  "4", 0
+number3         byte  "3", 0
+number2         byte  "2", 0
+number1        byte  "1", 0
+number0         byte  "0", 0
 BitPosition		BYTE " BIT POSITION ", 0
 BitCode			BYTE "     BIT CODE ", 0
 cornerL			BYTE	1	DUP(cornerLeft), 0
@@ -82,7 +89,7 @@ bottomCornerL	BYTE	1 DUP(bottomCornerLeft), 0
 bottomCornerR	BYTE	1 DUP(bottomCornerRight), 0
 invertedTC		BYTE	1 DUP(invertedTConnector), 0
 numberZeroD		BYTE	1 DUP(numberZero), 0
-number1			BYTE	1 DUP(numberOne), 0
+;number1			BYTE	1 DUP(numberOne), 0
 ; CODE SEGMENT
 
 
@@ -164,40 +171,29 @@ mov edx, offset spaceC
 call writestring
 
 
-mov edx, offset Number7
+mov edx, offset number7
 call writestring
 
 mov edx,offset spaceC
 call writestring
+call writestring
 
 mov edx, offset straightLineD
 call writestring
 
 mov edx, offset spaceC
 call writestring
-call writestring
-call writestring			;Value Here
-call writestring
 
 
-mov edx, offset straightLineD
+mov edx, offset number6
 call writestring
 
 mov edx, offset spaceC
-call writestring
-call writestring		;Value here
-call writestring
+call writestring	
 call writestring
 
 
-mov edx, offset straightLineD
-call writestring
 
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
 
 
 mov edx, offset straightLineD
@@ -205,40 +201,92 @@ call writestring
 
 mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset number5
 call writestring
+
+mov edx, offset spaceC
+call writestring	
 call writestring
+
+mov edx, offset straightLineD
+call writestring
+
+
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset number4
+call writestring
+
+mov edx, offset spaceC
+call writestring	
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring
 
+
 mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset number3
 call writestring
-call writestring
+
+mov edx, offset spaceC
+call writestring	
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring
 
+
 mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset number2
 call writestring
-call writestring
+
+mov edx, offset spaceC
+call writestring	
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring
 
+
 mov edx, offset spaceC
 call writestring
-call writestring
-call writestring
+
+
+mov edx, offset number1
 call writestring
 
+mov edx, offset spaceC
+call writestring	
+call writestring
+
+mov edx, offset straightLineD
+call writestring
+
+
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset number0
+call writestring
+
+mov edx, offset spaceC
+call writestring	
+call writestring
 
 mov edx, offset straightLineD
 call writestring
