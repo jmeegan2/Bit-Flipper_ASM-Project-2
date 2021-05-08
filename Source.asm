@@ -237,6 +237,32 @@ call writestring
 
 mov edx, offset straightLineD
 call writestring
+call crlf
+
+;Line 3 of display starts here
+mov edx, offset tShapeConnectorL
+call writestring
+
+mov edx, offset flatlines
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+call writestring
+
+mov edx, offset fourWayC
+call writestring
+
+mov edx, offset flatlines
+call writestring
+call writestring
+call wri
+
+
+
+
 
 
 main endp
