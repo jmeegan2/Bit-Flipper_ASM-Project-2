@@ -89,7 +89,18 @@ bottomCornerL	BYTE	1 DUP(bottomCornerLeft), 0
 bottomCornerR	BYTE	1 DUP(bottomCornerRight), 0
 invertedTC		BYTE	1 DUP(invertedTConnector), 0
 numberZeroD		BYTE	1 DUP(numberZero), 0
-;number1			BYTE	1 DUP(numberOne), 0
+
+pressKey		byte	"Press a key corresponding to the bit you would like to cycle...",0
+Press0			byte    "Press the '0' key to shift the bit in position 0.",0
+Press1			byte    "Press the '1' key to shift the bit in position 1.",0
+Press2			byte    "Press the '2' key to shift the bit in position 2.",0
+Press3			byte    "Press the '3' key to shift the bit in position 3.",0
+Press4			byte    "Press the '4' key to shift the bit in position 4.",0
+Press5			byte    "Press the '5' key to shift the bit in position 5.",0
+Press6			byte    "Press the '6' key to shift the bit in position 6.",0
+Press7			byte    "Press the '7' key to shift the bit in position 7.",0
+userEntry		byte	": ",0
+
 ; CODE SEGMENT
 
 
@@ -530,10 +541,41 @@ call writestring
 mov edx, offset bottomCornerR
 call writestring
 call crlf
+call crlf
+
 ;Start of visual display that asks the user what bit he wants to flip
 
+mov edx, offset pressKey
+call writestring
+call crlf
 
+mov edx, offset press0
+call writestring
+call crlf
+mov edx, offset press1
+call writestring
+call crlf
+mov edx, offset press2
+call writestring
+call crlf
+mov edx, offset press3
+call writestring
+call crlf
+mov edx, offset press4
+call writestring
+call crlf
+mov edx, offset press5
+call writestring
+call crlf
+mov edx, offset press6
+call writestring
+call crlf
+mov edx, offset press7
+call writestring
+call crlf
 
+mov edx, offset userEntry
+call writestring
 
 
 
