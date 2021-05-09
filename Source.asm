@@ -577,7 +577,7 @@ call crlf
 mov edx, offset userEntry
 call writestring
 
-
+;new entry
 
 
 main endp
