@@ -529,7 +529,8 @@ call writestring
 
 mov edx, offset bottomCornerR
 call writestring
-
+call crlf
+;Start of visual display that asks the user what bit he wants to flip
 
 
 
