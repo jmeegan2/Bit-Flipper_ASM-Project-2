@@ -1,8 +1,4 @@
 
-;Currently working on how to display the side numbers 5/3
-;can i just put in a call to print a number before call sampletext
-
-
 
 
 ; EXTERNAL DEPENDENCIES
@@ -49,13 +45,6 @@ InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted op
 
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
 
-
-
-;Most people set up a strategy with a bitfield mask.
-;Use AND or OR against a pre-defined bitfield that isolates the bit in question.
-;i.e. XXXX XXXX AND 0001 0000
-;that would be a test that would only result in a non-zero value if the 4th bit from the left was "1".
-;A strategy based around that idea is what most people develop.
 
 
 number7			byte  "7", 0
