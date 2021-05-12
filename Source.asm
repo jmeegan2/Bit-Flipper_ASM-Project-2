@@ -690,7 +690,7 @@ PrintBit7 PROC
 	push EDX
 	
 	; Write the text.
-	movzx Eax,  bit7 
+	movzx Eax,  bit7 + 0 
 	call writedec
 
 
