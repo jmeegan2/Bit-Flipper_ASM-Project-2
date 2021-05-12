@@ -13,7 +13,7 @@ INCLUDELIB	Irvine32.lib
 ExitProcess PROTO, dwExitCode:DWORD
 
 ;SYMBOLIC CONSTANTS 
-NUMBER_OF_BITS = 1d
+NUMBER_OF_BITS = 2d
 
 
 
@@ -49,7 +49,7 @@ InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted op
 
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
 
-foregroundColorCounter		BYTE	?
+
 sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
 
 
@@ -98,7 +98,7 @@ Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 userEntry		byte	": ",0
 bitZero			byte	" 0 ",0
 
-textColorCounter		BYTE	? ;text color 
+foregroundColorCounter		BYTE	1
 sampleZero				byte    " 0 ",0
 
 bit7			BYTE	0, 1	
@@ -660,16 +660,22 @@ call crlf
 
 
 
-mov ECX, NUMBER_OF_BITS
-		MOVZX EAX, textColorCounter + 2
 
+	
+	mov ECX, NUMBER_OF_BITS
+		
 		foregroundLoop:
 			; Set the newly forged text color and display the sample message.
 			call SetTextColor
 			call PrintBit7
 
-			
+			; Move onto the next foreground color.
+			inc AL
 		loop foregroundLoop
+
+
+
+	
 ;new entry
 	
 
@@ -684,7 +690,7 @@ PrintBit7 PROC
 	push EDX
 	
 	; Write the text.
-	movzx Eax,  bit7 + 0
+	movzx Eax,  bit7 
 	call writedec
 
 
