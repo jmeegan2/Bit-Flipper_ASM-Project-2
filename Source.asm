@@ -12,6 +12,9 @@ INCLUDELIB	Irvine32.lib
 ; PROTOTYPES
 ExitProcess PROTO, dwExitCode:DWORD
 
+;SYMBOLIC CONSTANTS 
+NUMBER_OF_COLORS = 4d
+
 
 
 ; DATA SEGMENT
@@ -43,7 +46,11 @@ bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
 
+
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
+
+foregroundColorCounter		BYTE	?
+sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
 
 
 
@@ -89,12 +96,25 @@ Press5			byte    "Press the '5' key to shift the bit in position 5.",0
 Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 userEntry		byte	": ",0
+bitZero			byte	" 0 ",0
 
+textColorCounter		BYTE	? ;text color 
+sampleZero				byte    " 0 ",0
 ; CODE SEGMENT
 
 
 .code
 main PROC
+
+
+
+
+
+
+
+
+
+
 
 ShowNewLine
 
@@ -191,6 +211,7 @@ call writestring
 mov edx, offset spaceC
 call writestring	
 call writestring
+
 
 
 
@@ -568,9 +589,37 @@ call writestring
 call crlf
 call crlf
 call crlf
+
+
+
+mov ECX, NUMBER_OF_COLORS
+		mov foregroundColorCounter, 0
+		foregroundLoop:
+			; Set the newly forged text color and display the sample message.
+			call SetTextColor
+			call PrintSampleZero
+
+			; Move onto the next foreground color.
+			inc AL
+		loop foregroundLoop
 ;new entry
 
 
 main endp
+
+PrintSampleZero PROC
+	; This procedure uses EDX internally, so preverve it.
+	push EDX
+	
+	; Write the text.
+	mov EDX, OFFSET SampleZero
+	call WriteString
+
+	; Restore EDX upon procedure completion.
+	pop EDX
+	ret
+PrintSampleZero ENDP
+
+
  invoke ExitProcess, 0
 END main		
