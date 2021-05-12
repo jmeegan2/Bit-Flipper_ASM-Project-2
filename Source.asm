@@ -13,7 +13,7 @@ INCLUDELIB	Irvine32.lib
 ExitProcess PROTO, dwExitCode:DWORD
 
 ;SYMBOLIC CONSTANTS 
-NUMBER_OF_COLORS = 4d
+NUMBER_OF_BITS = 7d
 
 
 
@@ -100,13 +100,33 @@ bitZero			byte	" 0 ",0
 
 textColorCounter		BYTE	? ;text color 
 sampleZero				byte    " 0 ",0
+
+arrayBYTE			BYTE	0, 1	
+
 ; CODE SEGMENT
+
 
 
 .code
 main PROC
 
 
+MOVZX EAX, arrayBYTE + 0		; NOTE: The [] are not mandatory in the syntax.
+	CALL WriteDec
+	CALL Crlf
+
+	MOVZX EAX, arrayBYTE + 1		; NOTE: The [] are not mandatory in the syntax.
+	CALL WriteDec
+	CALL Crlf
+
+	MOVZX EAX, arrayBYTE + 0		; NOTE: The [] are not mandatory in the syntax.
+	CALL WriteDec
+	CALL Crlf
+
+
+call crlf
+call crlf
+call crlf
 
 
 
@@ -592,7 +612,7 @@ call crlf
 
 
 
-mov ECX, NUMBER_OF_COLORS
+mov ECX, NUMBER_OF_BITS
 		mov foregroundColorCounter, 0
 		foregroundLoop:
 			; Set the newly forged text color and display the sample message.
@@ -607,6 +627,10 @@ mov ECX, NUMBER_OF_COLORS
 
 main endp
 
+
+
+;Preserve this 
+
 PrintSampleZero PROC
 	; This procedure uses EDX internally, so preverve it.
 	push EDX
@@ -614,6 +638,7 @@ PrintSampleZero PROC
 	; Write the text.
 	mov EDX, OFFSET SampleZero
 	call WriteString
+
 
 	; Restore EDX upon procedure completion.
 	pop EDX
