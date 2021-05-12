@@ -111,15 +111,16 @@ arrayBYTE			BYTE	0, 1
 main PROC
 
 
-MOVZX EAX, arrayBYTE + 0		; NOTE: The [] are not mandatory in the syntax.
+
+MOVZX EAX, arrayBYTE + 0		
 	CALL WriteDec
 	CALL Crlf
 
-	MOVZX EAX, arrayBYTE + 1		; NOTE: The [] are not mandatory in the syntax.
+	MOVZX EAX, arrayBYTE + 1		
 	CALL WriteDec
 	CALL Crlf
 
-	MOVZX EAX, arrayBYTE + 0		; NOTE: The [] are not mandatory in the syntax.
+	MOVZX EAX, arrayBYTE + 0		
 	CALL WriteDec
 	CALL Crlf
 
@@ -418,73 +419,73 @@ call writestring
 mov edx, offset straightLineD
 call writestring 
 
+;call SetTextColor + 3
+mov edx, offset sampleZero
+call writestring
 mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset sampleZero
 call writestring
+mov edx, offset spaceC
 call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset sampleZero
+call writestring
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset sampleZero
+call writestring
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset sampleZero
+call writestring
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+
+mov edx, offset sampleZero
+call writestring
+mov edx, offset spaceC
+call writestring
+
+
+mov edx, offset straightLineD
+call writestring 
+
+mov edx, offset sampleZero
+call writestring
+mov edx, offset spaceC
 call writestring
 
 mov edx, offset straightLineD
 call writestring 
 
+mov edx, offset sampleZero
+call writestring
 mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset spaceC
-call writestring
-call writestring
-call writestring
 call writestring
 
 mov edx, offset straightLineD
@@ -623,7 +624,7 @@ mov ECX, NUMBER_OF_BITS
 			inc AL
 		loop foregroundLoop
 ;new entry
-
+	
 
 main endp
 
