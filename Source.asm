@@ -419,6 +419,7 @@ call crlf
 ;////////////////////////////////////
 ;BitCode display value is here 
 ;////////////////////////////////////
+
 mov edx, offset straightLineD
 call writestring 
 
@@ -534,7 +535,10 @@ mov edx, offset straightLineD
 call writestring 
 call crlf
 
+
+;/////////////////////////////////
 ;END of display for bit value 
+;////////////////////////////////
 ;5th line of display
 
 mov edx, offset bottomCornerL
