@@ -101,7 +101,14 @@ bitZero			byte	" 0 ",0
 textColorCounter		BYTE	? ;text color 
 sampleZero				byte    " 0 ",0
 
-arrayBYTE			BYTE	0, 1	
+bit7			BYTE	0, 1	
+bit6			BYTE	0, 1	
+bit5			BYTE	0, 1		
+bit4			BYTE	0, 1	
+bit3			BYTE	0, 1	
+bit2			BYTE	0, 1	
+bit1			BYTE	0, 1	
+bit0			BYTE	0, 1	
 
 ; CODE SEGMENT
 
@@ -112,15 +119,15 @@ main PROC
 
 
 
-MOVZX EAX, arrayBYTE + 0		
+MOVZX EAX, bit7 + 0		
 	CALL WriteDec
 	CALL Crlf
 
-	MOVZX EAX, arrayBYTE + 1		
+	MOVZX EAX, bit7 + 1		
 	CALL WriteDec
 	CALL Crlf
 
-	MOVZX EAX, arrayBYTE + 0		
+	MOVZX EAX, bit7 + 0		
 	CALL WriteDec
 	CALL Crlf
 
@@ -409,6 +416,9 @@ call crlf
 ;line 4 of display starts here
 ;mov edx, offset
 
+;////////////////////////////////////
+;BitCode display value is here 
+;////////////////////////////////////
 mov edx, offset straightLineD
 call writestring 
 
@@ -419,79 +429,112 @@ call writestring
 mov edx, offset straightLineD
 call writestring 
 
-;call SetTextColor + 3
-mov edx, offset sampleZero
-call writestring
+;Bit Value for bit 7
+
 mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit7 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring 
 
-mov edx, offset sampleZero
-call writestring
+;Bit Value for bit 6
 mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit6 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
+call writestring
+
+
+
+mov edx, offset straightLineD
+call writestring 
+;Bit Value for bit 5
+mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit5 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
+call writestring
+
+
+
+mov edx, offset straightLineD
+call writestring 
+;Bit Value for bit 4
+mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit4 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
+call writestring
+
+
+
+mov edx, offset straightLineD
+call writestring 
+;Bit Value for bit 3
+mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit3 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring 
 
-mov edx, offset sampleZero
-call writestring
+;Bit Value for bit 2
 mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit2 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
+call writestring
+
+
+
+mov edx, offset straightLineD
+call writestring 
+;Bit Value for bit 1
+mov edx, offset spaceC
+call writestring
+MOVZX EAX, bit1 + 0	
+call writedec
+mov edx, offset spaceC
+call writestring
 call writestring
 
 
 mov edx, offset straightLineD
 call writestring 
-
-mov edx, offset sampleZero
-call writestring
+;Bit Value for bit 0
 mov edx, offset spaceC
 call writestring
-
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset sampleZero
-call writestring
+MOVZX EAX, bit0 + 0	
+call writedec
 mov edx, offset spaceC
 call writestring
-
-
-mov edx, offset straightLineD
-call writestring 
-
-
-mov edx, offset sampleZero
-call writestring
-mov edx, offset spaceC
 call writestring
 
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset sampleZero
-call writestring
-mov edx, offset spaceC
-call writestring
-
-mov edx, offset straightLineD
-call writestring 
-
-mov edx, offset sampleZero
-call writestring
-mov edx, offset spaceC
-call writestring
 
 mov edx, offset straightLineD
 call writestring 
 call crlf
 
+;END of display for bit value 
 ;5th line of display
 
 mov edx, offset bottomCornerL
