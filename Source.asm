@@ -666,7 +666,7 @@ mov ECX, NUMBER_OF_BITS
 		foregroundLoop:
 			; Set the newly forged text color and display the sample message.
 			call SetTextColor
-			
+			call PrintBit7
 
 			
 		loop foregroundLoop
@@ -679,19 +679,19 @@ main endp
 
 ;Preserve this 
 
-PrintSampleZero PROC
+PrintBit7 PROC
 	; This procedure uses EDX internally, so preverve it.
 	push EDX
 	
 	; Write the text.
-	mov EDX, OFFSET SampleZero
-	call WriteString
+	movzx Eax,  bit7 + 0
+	call writedec
 
 
 	; Restore EDX upon procedure completion.
 	pop EDX
 	ret
-PrintSampleZero ENDP
+PrintBit7 ENDP
 
 
  invoke ExitProcess, 0
