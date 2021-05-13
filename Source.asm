@@ -13,7 +13,7 @@ INCLUDELIB	Irvine32.lib
 ExitProcess PROTO, dwExitCode:DWORD
 
 ;SYMBOLIC CONSTANTS 
-NUMBER_OF_BITS = 2d
+NUMBER_OF_BITS = 1d
 
 
 
@@ -101,7 +101,7 @@ bitZero			byte	" 0 ",0
 foregroundColorCounter		BYTE	1
 sampleZero				byte    " 0 ",0
 
-bit7			BYTE	0, 1	
+bit7			BYTE	0, 1
 bit6			BYTE	0, 1	
 bit5			BYTE	0, 1		
 bit4			BYTE	0, 1	
@@ -117,24 +117,6 @@ bit0			BYTE	0, 1
 .code
 main PROC
 
-
-
-MOVZX EAX, bit7 + 0		
-	CALL WriteDec
-	CALL Crlf
-
-	MOVZX EAX, bit7 + 1		
-	CALL WriteDec
-	CALL Crlf
-
-	MOVZX EAX, bit7 + 0		
-	CALL WriteDec
-	CALL Crlf
-
-
-call crlf
-call crlf
-call crlf
 
 
 
@@ -662,12 +644,12 @@ call crlf
 
 
 	
-	mov ECX, NUMBER_OF_BITS
-		
+	mov Ecx, NUMBER_OF_BITS 
 		foregroundLoop:
 			; Set the newly forged text color and display the sample message.
-			call SetTextColor
-			call PrintBit7
+			
+			call PrintBit7 
+			
 
 			; Move onto the next foreground color.
 			inc AL
@@ -690,9 +672,10 @@ PrintBit7 PROC
 	push EDX
 	
 	; Write the text.
-	movzx Eax,  bit7 + 0 
+	call SetTextColor
+	movzx Eax, [ bit7 + 0 ]
 	call writedec
-
+	
 
 	; Restore EDX upon procedure completion.
 	pop EDX
