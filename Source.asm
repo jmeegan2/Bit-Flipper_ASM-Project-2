@@ -99,6 +99,7 @@ userEntry		byte	": ",0
 bitZero			byte	" 0 ",0
 
 foregroundColorCounter		BYTE	1
+foregroundColorCounter2		BYTE	1
 sampleZero				byte    " 0 ",0
 
 bit7			BYTE	0, 1
@@ -654,6 +655,18 @@ call crlf
 			; Move onto the next foreground color.
 			inc AL
 		loop foregroundLoop
+		call crlf
+		
+		mov Ecx, NUMBER_OF_BITS 
+		foregroundLoop2:
+			; Set the newly forged text color and display the sample message.
+			
+			call PrintBit6 
+			
+
+			; Move onto the next foreground color.
+			inc AL
+		loop foregroundLoop2
 
 
 
@@ -673,14 +686,31 @@ PrintBit7 PROC
 	
 	; Write the text.
 	call SetTextColor
-	movzx Eax, [ bit7 + 0 ]
+	movzx Eax, [ bit7 + 0]
 	call writedec
 	
 
 	; Restore EDX upon procedure completion.
 	pop EDX
 	ret
+	
 PrintBit7 ENDP
+call crlf
+PrintBit6 PROC
+	; This procedure uses EDX internally, so preverve it.
+	push EDX
+	call crlf
+	; Write the text.
+	call SetTextColor
+	movzx Eax, [ bit6 + 0 ]
+	call crlf
+	call writedec
+	
+	call crlf
+	; Restore EDX upon procedure completion.
+	pop EDX
+	ret
+PrintBit6 ENDP
 
 
  invoke ExitProcess, 0
