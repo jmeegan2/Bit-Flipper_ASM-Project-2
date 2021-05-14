@@ -46,14 +46,8 @@ bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
 
-
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
-
-
 sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
-
-
-
 number7			byte  "7", 0
 number6			byte  "6", 0
 number5         byte  "5", 0
@@ -112,22 +106,9 @@ bit1			BYTE	0, 1
 bit0			BYTE	0, 1	
 
 ; CODE SEGMENT
-
-
-
 .code
 main PROC
-
-
-
-
-
-
-
-
-
-
-ShowNewLine
+call crlf
 
 mov edx, offset cornerL
 call writestring
@@ -691,16 +672,13 @@ PrintBit7 PROC
 	mov edx, offset spaceC
 	call writestring
 	call SetTextColor
-	movzx Eax, [ bit7 ]
+	movzx Eax, [ bit7 ]			;EAX is  32-bit, "int" size register
 	call writedec
-	call SetTextColor
+	call SetTextColor 
 	call crlf
-	
-	
 	; Restore EDX upon procedure completion.
 	pop EDX
 	ret
-	
 PrintBit7 ENDP
 ;call crlf
 ;PrintBit6 PROC
@@ -712,13 +690,10 @@ PrintBit7 ENDP
 	;movzx Eax, [ bit6 + 0 ]
 	;call crlf
 	;call writedec
-	
 	;call crlf
 	; Restore EDX upon procedure completion.
 	;pop EDX
 	;ret
 ;PrintBit6 ENDP
-
-
  invoke ExitProcess, 0
 END main		
