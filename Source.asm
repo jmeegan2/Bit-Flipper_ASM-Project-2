@@ -470,6 +470,13 @@ call crlf
 mov edx, offset press7
 call writestring
 call crlf
+
+;trying something out 
+MOVZX EAX, [bit2 + 1]	
+call writedec
+MOVzx ECX, [bit2 + 1]	
+call writedec
+call crlf
 mov edx, offset userEntry	;just a ":" displayed
 call writestring
 CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
