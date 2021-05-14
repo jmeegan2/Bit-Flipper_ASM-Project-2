@@ -98,8 +98,10 @@ bit0			BYTE	0, 1
 ; CODE SEGMENT
 .code
 main PROC
-call crlf
 
+endlessLoopBegin:
+
+call crlf
 mov edx, offset cornerL
 call writestring
 mov edx, offset flatlines
@@ -491,6 +493,7 @@ call PrintBit7
 			; Move onto the next foreground color.
 			inc AL
 		loop foregroundLoop
+	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label.
 main endp
 ;Preserve this 
 
