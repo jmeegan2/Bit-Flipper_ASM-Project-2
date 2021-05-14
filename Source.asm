@@ -100,7 +100,6 @@ bit0			BYTE	0, 1
 main PROC
 
 InfiniteLoopBegin:
-
 call crlf
 mov edx, offset cornerL
 call writestring
@@ -307,7 +306,7 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit7 + 0	
+MOVZX EAX, bit7 + 0
 call writedec
 mov edx, offset spaceC
 call writestring
