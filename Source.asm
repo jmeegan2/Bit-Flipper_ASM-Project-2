@@ -477,45 +477,10 @@ call crlf
 call crlf
 call crlf
 
-	MOV EAX, 10000						; load EAX with the number of milliseconds to stall
+	MOV EAX, 	1000					; load EAX with the number of milliseconds to stall
 	CALL Delay
 
 	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label.
 main endp
 ;Preserve this 
-
-PrintBit7 PROC
-	; This procedure uses EDX internally, so preverve it.
-	push EDX
-	
-	; Write the text.
-	mov edx, offset spaceC
-	call writestring
-	call SetTextColor
-	movzx Eax, [ bit7 + 1]			;EAX is  32-bit, "int" size register
-	call writedec
-	call SetTextColor 
-	call crlf
-	; Restore EDX upon procedure completion.
-	pop EDX
-	ret
-PrintBit7 ENDP
-;call crlf
-PrintBit6 PROC
-	; This procedure uses EDX internally, so preverve it.
-	push EDX
-	
-	; Write the text.
-	mov edx, offset spaceC
-	call writestring
-	call SetTextColor
-	movzx Eax, [ bit6  ]			;EAX is  32-bit, "int" size register
-	call writedec
-	call SetTextColor 
-	call crlf
-	; Restore EDX upon procedure completion.
-	pop EDX
-	ret
-PrintBit6 ENDP
- invoke ExitProcess, 0
-END main		
+		END main
