@@ -473,14 +473,16 @@ call writestring
 call crlf
 mov edx, offset userEntry
 call writestring
+CALL ReadDec
+
 call crlf
 call crlf
 call crlf
 
-	MOV EAX, 	1000					; load EAX with the number of milliseconds to stall
+	MOV EAX, 	10000					; load EAX with the number of milliseconds to stall
 	CALL Delay
-
-	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label.
+	
+	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
 main endp
 ;Preserve this 
 		END main
