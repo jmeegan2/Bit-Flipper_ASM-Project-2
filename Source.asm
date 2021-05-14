@@ -17,11 +17,6 @@ NUMBER_OF_BITS = 1d
 
 ; DATA SEGMENT
 .data
-
-ShowNewline		TEXTEQU	<CALL Crlf>
-
-
-
 numberZero					EQU		48d		; 48 is the base-10 ASCII code for the number zero
 cornerLeft					EQU		201d	; 201 is the base-10 ASCII code for open ended left corner
 theDoubleLinesSymbol		EQU		205d	; 205 is the base-10 ASCII code for "="
@@ -43,7 +38,6 @@ tShapeConnectorRight		EQU		185d	; 185 is the base-10 ASCII code for a t shape co
 bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended L shape
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
-
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
 sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
 number7			byte  "7", 0
@@ -77,7 +71,6 @@ bottomCornerL	BYTE	1 DUP(bottomCornerLeft), 0
 bottomCornerR	BYTE	1 DUP(bottomCornerRight), 0
 invertedTC		BYTE	1 DUP(invertedTConnector), 0
 numberZeroD		BYTE	1 DUP(numberZero), 0
-
 pressKey		byte	"Press a key corresponding to the bit you would like to cycle...",0
 Press0			byte    "Press the '0' key to shift the bit in position 0.",0
 Press1			byte    "Press the '1' key to shift the bit in position 1.",0
@@ -89,7 +82,6 @@ Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 userEntry		byte	": ",0
 bitZero			byte	" 0 ",0
-
 foregroundColorCounter		BYTE	2
 foregroundColorCounter2		BYTE	2
 sampleZero				byte    " 0 ",0
@@ -110,7 +102,6 @@ call crlf
 
 mov edx, offset cornerL
 call writestring
-
 mov edx, offset flatlines
 call writestring
 call writestring
@@ -119,10 +110,8 @@ call writestring
 call writestring
 call writestring
 call writestring
-
 MOV EDX, OFFSET tConnector
 	CALL WriteString 
-
 mov edx, offset flatlines
 call writestring
 call writestring
@@ -169,136 +158,80 @@ call crlf
 ;2nd line starts here 
 mov edx, offset straightLineD
 call writestring
-
 mov edx, offset BitPosition			;Text BIT POSITION appears 
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number7
 call writestring
-
 mov edx,offset spaceC
 call writestring
 call writestring
-
 mov edx, offset straightLineD
 call writestring
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number6
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
-
-
-
-
-
 mov edx, offset straightLineD
 call writestring
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number5
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
 mov edx, offset straightLineD
 call writestring
-
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number4
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring
-
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number3
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring
-
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number2
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring
-
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number1
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
 mov edx, offset straightLineD
 call writestring
-
-
 mov edx, offset spaceC
 call writestring
-
-
 mov edx, offset number0
 call writestring
-
 mov edx, offset spaceC
 call writestring	
 call writestring
-
 mov edx, offset straightLineD
 call writestring
 call crlf
@@ -306,7 +239,6 @@ call crlf
 ;Line 3 of display starts here
 mov edx, offset tShapeConnectorL
 call writestring
-
 mov edx, offset flatlines
 call writestring
 call writestring
@@ -315,63 +247,46 @@ call writestring
 call writestring
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
 call writestring 
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset fourWayC
-call writestring 
-
+call writestring
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset tShapeConnectorR
 call writestring 
 call crlf
@@ -381,19 +296,13 @@ call crlf
 ;////////////////////////////////////
 ;BitCode display value is here 
 ;////////////////////////////////////
-
 mov edx, offset straightLineD
 call writestring 
-
-mov edx ,offset BitCode
+mov edx ,offset BitCode					;Text display of BIT CODE 
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring 
-
 ;Bit Value for bit 7
-
 mov edx, offset spaceC
 call writestring
 MOVZX EAX, bit7 + 0	
@@ -401,11 +310,8 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring 
-
 ;Bit Value for bit 6
 mov edx, offset spaceC
 call writestring
@@ -414,9 +320,6 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
-
 mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 5
@@ -427,9 +330,6 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
-
 mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 4
@@ -440,9 +340,6 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
-
 mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 3
@@ -453,11 +350,8 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring 
-
 ;Bit Value for bit 2
 mov edx, offset spaceC
 call writestring
@@ -466,9 +360,6 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
-
 mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 1
@@ -479,8 +370,6 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 0
@@ -491,21 +380,15 @@ call writedec
 mov edx, offset spaceC
 call writestring
 call writestring
-
-
 mov edx, offset straightLineD
 call writestring 
 call crlf
-
-
 ;/////////////////////////////////
 ;END of display for bit value 
 ;////////////////////////////////
 ;5th line of display
-
 mov edx, offset bottomCornerL
 call writestring
-
 mov edx, offset flatlines
 call writestring
 call writestring
@@ -514,81 +397,54 @@ call writestring
 call writestring
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset InvertedTC
 call writestring
-
-
 mov edx, offset flatlines
 call writestring
 call writestring
-
 mov edx, offset bottomCornerR
 call writestring
 call crlf
 call crlf
-
 ;Start of visual display that asks the user what bit he wants to flip
-
 mov edx, offset pressKey
 call writestring
 call crlf
-
 mov edx, offset press0
 call writestring
 call crlf
@@ -613,65 +469,29 @@ call crlf
 mov edx, offset press7
 call writestring
 call crlf
-
 mov edx, offset userEntry
 call writestring
 call crlf
 call crlf
 call crlf
 
-
 mov ecx, NUMBER_OF_BITS
 call PrintBit7 
-
-
 	mov Ecx, NUMBER_OF_BITS 
 		foregroundLoop:
-	
 			; Set the newly forged text color and display the sample message
-			
 			call PrintBit7 
-			
-			
-
 			; Move onto the next foreground color.
 			inc AL
 		loop foregroundLoop
-	
 	mov Ecx, NUMBER_OF_BITS 
 		foregroundLoop6:
-	
 			; Set the newly forged text color and display the sample message
-			
 			call PrintBit6
-			
-			
-
 			; Move onto the next foreground color.
 			inc AL
 		loop foregroundLoop
-		
-		;mov Ecx, NUMBER_OF_BITS 
-		;foregroundLoop2:
-			; Set the newly forged text color and display the sample message.
-			
-			;call PrintBit6
-			
-
-			; Move onto the next foreground color.
-			;inc AL
-		;loop foregroundLoop2
-
-
-
-	
-;new entry
-	
-
 main endp
-
-
-
 ;Preserve this 
 
 PrintBit7 PROC
@@ -699,7 +519,7 @@ PrintBit6 PROC
 	mov edx, offset spaceC
 	call writestring
 	call SetTextColor
-	movzx Eax, [ bit6 + 0 ]			;EAX is  32-bit, "int" size register
+	movzx Eax, [ bit6  ]			;EAX is  32-bit, "int" size register
 	call writedec
 	call SetTextColor 
 	call crlf
