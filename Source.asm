@@ -1,6 +1,4 @@
 
-
-
 ; EXTERNAL DEPENDENCIES
 INCLUDE		Irvine32.inc
 INCLUDELIB	Irvine32.lib
@@ -640,6 +638,18 @@ call PrintBit7
 			inc AL
 		loop foregroundLoop
 	
+	mov Ecx, NUMBER_OF_BITS 
+		foregroundLoop6:
+	
+			; Set the newly forged text color and display the sample message
+			
+			call PrintBit6
+			
+			
+
+			; Move onto the next foreground color.
+			inc AL
+		loop foregroundLoop
 		
 		;mov Ecx, NUMBER_OF_BITS 
 		;foregroundLoop2:
@@ -672,7 +682,7 @@ PrintBit7 PROC
 	mov edx, offset spaceC
 	call writestring
 	call SetTextColor
-	movzx Eax, [ bit7 ]			;EAX is  32-bit, "int" size register
+	movzx Eax, [ bit7 + 1]			;EAX is  32-bit, "int" size register
 	call writedec
 	call SetTextColor 
 	call crlf
@@ -681,19 +691,21 @@ PrintBit7 PROC
 	ret
 PrintBit7 ENDP
 ;call crlf
-;PrintBit6 PROC
+PrintBit6 PROC
 	; This procedure uses EDX internally, so preverve it.
-	;push EDX
-	;call crlf
+	push EDX
+	
 	; Write the text.
-	;call SetTextColor
-	;movzx Eax, [ bit6 + 0 ]
-	;call crlf
-	;call writedec
-	;call crlf
+	mov edx, offset spaceC
+	call writestring
+	call SetTextColor
+	movzx Eax, [ bit6 + 0 ]			;EAX is  32-bit, "int" size register
+	call writedec
+	call SetTextColor 
+	call crlf
 	; Restore EDX upon procedure completion.
-	;pop EDX
-	;ret
-;PrintBit6 ENDP
+	pop EDX
+	ret
+PrintBit6 ENDP
  invoke ExitProcess, 0
 END main		
