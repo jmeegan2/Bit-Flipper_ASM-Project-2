@@ -99,7 +99,7 @@ bit0			BYTE	0, 1
 .code
 main PROC
 
-endlessLoopBegin:
+InfiniteLoopBegin:
 
 call crlf
 mov edx, offset cornerL
@@ -471,18 +471,14 @@ call crlf
 mov edx, offset press7
 call writestring
 call crlf
-mov edx, offset userEntry
+mov edx, offset userEntry	;just a ":" displayed
 call writestring
-CALL ReadDec
-
-call crlf
-call crlf
-call crlf
-
-	MOV EAX, 	10000					; load EAX with the number of milliseconds to stall
+CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
 	CALL Delay
+	MOV EAX, 	1							; load EAX with the number of milliseconds to stall
+	JMP InfiniteLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
+									
 	
-	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
 main endp
 ;Preserve this 
 		END main
