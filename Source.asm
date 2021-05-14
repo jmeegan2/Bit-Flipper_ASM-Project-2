@@ -477,22 +477,9 @@ call crlf
 call crlf
 call crlf
 
-mov ecx, NUMBER_OF_BITS
-call PrintBit7 
-	mov Ecx, NUMBER_OF_BITS 
-		foregroundLoop:
-			; Set the newly forged text color and display the sample message
-			call PrintBit7 
-			; Move onto the next foreground color.
-			inc AL
-		loop foregroundLoop
-	mov Ecx, NUMBER_OF_BITS 
-		foregroundLoop6:
-			; Set the newly forged text color and display the sample message
-			call PrintBit6
-			; Move onto the next foreground color.
-			inc AL
-		loop foregroundLoop
+	MOV EAX, 10000						; load EAX with the number of milliseconds to stall
+	CALL Delay
+
 	JMP endlessLoopBegin				; Jump back to the 'endlessLoopBegin' label.
 main endp
 ;Preserve this 
