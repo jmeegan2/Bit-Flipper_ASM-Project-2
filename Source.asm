@@ -89,14 +89,14 @@ bitZero			byte	" 0 ",0
 ;foregroundColorCounter2		BYTE	2
 ;sampleZero				byte    " 0 ",0
 bit7			BYTE	"01010",0
-bit6			BYTE	0, 1	
-bit5			BYTE	0, 1		
-bit4			BYTE	0, 1	
-bit3			BYTE	0, 1	
-bit2			BYTE	0, 1	
-bit1			BYTE	0, 1	
-bit0			BYTE	0, 1	
-finish			byte "finish", 0Dh, 0Ah, 0
+bit6			BYTE	"01010",0
+bit5			BYTE	"01010",0	
+bit4			BYTE	"01010",0
+bit3			BYTE	"01010",0
+bit2			BYTE	"01010",0
+bit1			BYTE	"01010",0
+bit0			BYTE	"01010",0
+;finish			byte "finish", 0Dh, 0Ah, 0      not currently in use 
 
 ; CODE SEGMENT
 .code
@@ -316,8 +316,6 @@ MOVZX EAX, [bit7 + 0]		; 0
 	CALL WriteChar
 	 mov eax,7
       call SetTextColor
-
-
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -328,8 +326,8 @@ mov edx, offset spaceC
 call writestring
  mov  eax,3
       call SetTextColor
-MOVZX EAX, bit6 
-call writedec
+MOVZX EAX, [bit6 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -342,8 +340,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit5 
-call writedec
+MOVZX EAX, [bit5 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -356,8 +354,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit4 
-call writedec
+MOVZX EAX, [bit4 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -370,8 +368,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit3 
-call writedec
+MOVZX EAX, [bit3 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -384,8 +382,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit2 
-call writedec
+MOVZX EAX, [bit2 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -398,8 +396,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit1 
-call writedec
+MOVZX EAX, [bit1 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -412,8 +410,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, bit0 
-call writedec
+MOVZX EAX, [bit0 + 0]		; 0
+	CALL WriteChar
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -481,34 +479,34 @@ call writestring
 call crlf
 call crlf
 ;Start of visual display that asks the user what bit he wants to flip
-mov edx, offset pressKey
+mov edx, offset pressKey        ;"Press a key corresponding to the bit you would like to cycle..."
 call writestring
 call crlf
-mov edx, offset press0
+mov edx, offset press0          ;"Press the '0' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press1
+mov edx, offset press1          ;"Press the '1' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press2
+mov edx, offset press2          ;"Press the '2' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press3
+mov edx, offset press3          ;"Press the '3' key to shift the bit in position 0."    
 call writestring
 call crlf
-mov edx, offset press4
+mov edx, offset press4          ;"Press the '4' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press5
+mov edx, offset press5          ;"Press the '5' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press6
+mov edx, offset press6          ;"Press the '6' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset press7
+mov edx, offset press7          ;"Press the '7' key to shift the bit in position 0."
 call writestring
 call crlf
-mov edx, offset colon	
+mov edx, offset colon	        ;": "
 call writestring 
 CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
 ; this will load EAX with the unsigned integer reflecting input from keyboard
@@ -517,11 +515,11 @@ mov ecx, eax
 
 TestingLoop_Begin:
 	
-CMP  eax, 1
+CMP  eax, 0
 JZ equalTo
 
 equalTo:
-movzx eax, [bit7 + 2]
+movzx eax, [bit7 + 1]
 call writeChar
 call crlf
 jmp over
@@ -531,7 +529,7 @@ jmp over
 LOOP TestingLoop_Begin
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
-	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Told to put in endless loop
+	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in endless loop
 									
 	;trying something out 
 ;MOVZX EAX, [bit2 + 1]	
