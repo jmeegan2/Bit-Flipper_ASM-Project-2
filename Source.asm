@@ -515,11 +515,11 @@ mov ecx, eax
 
 TestingLoop_Begin:
 	
-CMP  eax, 0
+CMP  eax, 1
 JZ equalTo
 
 equalTo:
-movzx eax, [bit7 + 1]
+movzx eax, [bit1 + 1]
 call writeChar
 call crlf
 jmp over
