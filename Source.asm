@@ -80,11 +80,12 @@ Press4			byte    "Press the '4' key to shift the bit in position 4.",0
 Press5			byte    "Press the '5' key to shift the bit in position 5.",0
 Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
-userEntry		byte	": ",0
+Colon			byte    ": ",0 
+userEntry		byte	?
 bitZero			byte	" 0 ",0
-foregroundColorCounter		BYTE	2
-foregroundColorCounter2		BYTE	2
-sampleZero				byte    " 0 ",0
+;foregroundColorCounter		BYTE	2
+;foregroundColorCounter2		BYTE	2
+;sampleZero				byte    " 0 ",0
 
 bit7			BYTE	0, 1
 bit6			BYTE	0, 1	
@@ -306,7 +307,7 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit7 + 0
+MOVZX EAX, bit7 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -316,7 +317,7 @@ call writestring
 ;Bit Value for bit 6
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit6 + 0	
+MOVZX EAX, bit6 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -326,7 +327,7 @@ call writestring
 ;Bit Value for bit 5
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit5 + 0	
+MOVZX EAX, bit5 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -336,7 +337,7 @@ call writestring
 ;Bit Value for bit 4
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit4 + 0	
+MOVZX EAX, bit4 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -346,7 +347,7 @@ call writestring
 ;Bit Value for bit 3
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit3 + 0	
+MOVZX EAX, bit3 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -356,7 +357,7 @@ call writestring
 ;Bit Value for bit 2
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit2 + 0	
+MOVZX EAX, bit2 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -366,7 +367,7 @@ call writestring
 ;Bit Value for bit 1
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit1 + 0	
+MOVZX EAX, bit1 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -376,7 +377,7 @@ call writestring
 ;Bit Value for bit 0
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit0 + 0	
+MOVZX EAX, bit0 
 call writedec
 mov edx, offset spaceC
 call writestring
@@ -470,18 +471,19 @@ call crlf
 mov edx, offset press7
 call writestring
 call crlf
-
+mov edx, offset colon
+call writestring 
 ;trying something out 
-MOVZX EAX, [bit2 + 1]	
-call writedec
-MOVzx ECX, [bit2 + 1]	
-call writedec
-call crlf
-mov edx, offset userEntry	;just a ":" displayed
-call writestring
+;MOVZX EAX, [bit2 + 1]	
+;call writedec
+;MOVzx ECX, [bit2 + 1]	
+;call writedec
+;call crlf
+;mov edx, offset userEntry	;just a ":" displayed
+;call writestring
 CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
 	CALL Delay
-	MOV EAX, 	1							; load EAX with the number of milliseconds to stall
+;	MOV EAX, 	1							; load EAX with the number of milliseconds to stall
 	JMP InfiniteLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
 									
 	
