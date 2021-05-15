@@ -1,4 +1,5 @@
-
+;ATTENTION
+;Currently working on loops to change the bit values upon the user entering a value (skip to line 519 to continue 5/14)
 ; EXTERNAL DEPENDENCIES
 INCLUDE		Irvine32.inc
 INCLUDELIB	Irvine32.lib
@@ -87,8 +88,7 @@ bitZero			byte	" 0 ",0
 ;foregroundColorCounter		BYTE	2
 ;foregroundColorCounter2		BYTE	2
 ;sampleZero				byte    " 0 ",0
-
-bit7			BYTE	"01",0
+bit7			BYTE	"01010",0
 bit6			BYTE	0, 1	
 bit5			BYTE	0, 1		
 bit4			BYTE	0, 1	
@@ -102,9 +102,9 @@ finish			byte "finish", 0Dh, 0Ah, 0
 .code
 main PROC
 
-InfiniteLoopBegin:
+InfiniteLoopBegin:                      ;Infinite Loop beings here
 call crlf
-mov edx, offset cornerL
+mov edx, offset cornerL                             ;Display of Graph begins 
 call writestring
 mov edx, offset flatlines
 call writestring
@@ -521,8 +521,8 @@ CMP  eax, 1
 JZ equalTo
 
 equalTo:
-mov edX, offset [bit1 + 1]
-call writeDEC
+movzx eax, [bit7 + 2]
+call writeChar
 call crlf
 jmp over
 
@@ -531,7 +531,7 @@ jmp over
 LOOP TestingLoop_Begin
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
-	JMP InfiniteLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
+	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Told to put in endless loop
 									
 	;trying something out 
 ;MOVZX EAX, [bit2 + 1]	
