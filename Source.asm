@@ -88,7 +88,7 @@ bitZero			byte	" 0 ",0
 ;foregroundColorCounter2		BYTE	2
 ;sampleZero				byte    " 0 ",0
 
-bit7			BYTE	0,1
+bit7			BYTE	"01",0
 bit6			BYTE	0, 1	
 bit5			BYTE	0, 1		
 bit4			BYTE	0, 1	
@@ -309,8 +309,15 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring
-MOVZX EAX, bit7 
-call writedec
+
+ mov  eax,3
+      call SetTextColor
+MOVZX EAX, [bit7 + 0]		; 0
+	CALL WriteChar
+	 mov eax,7
+      call SetTextColor
+
+
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -319,8 +326,12 @@ call writestring
 ;Bit Value for bit 6
 mov edx, offset spaceC
 call writestring
+ mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit6 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -329,8 +340,12 @@ call writestring
 ;Bit Value for bit 5
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit5 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -339,8 +354,12 @@ call writestring
 ;Bit Value for bit 4
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit4 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -349,8 +368,12 @@ call writestring
 ;Bit Value for bit 3
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit3 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -359,8 +382,12 @@ call writestring
 ;Bit Value for bit 2
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit2 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -369,8 +396,12 @@ call writestring
 ;Bit Value for bit 1
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit1 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -379,8 +410,12 @@ call writestring
 ;Bit Value for bit 0
 mov edx, offset spaceC
 call writestring
+mov  eax,3
+      call SetTextColor
 MOVZX EAX, bit0 
 call writedec
+ mov eax,7
+      call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -484,24 +519,12 @@ TestingLoop_Begin:
 	
 CMP  eax, 1
 JZ equalTo
-JC lessThan
-;JMP greaterThan
 
 equalTo:
 mov edX, offset [bit1 + 1]
 call writeDEC
 call crlf
 jmp over
-
-lessThan:
-	MOV EdX, OFFSET finish
-	CALL WriteString
-	jmp over
-;;	greaterThan:
-	;MOV EDX, OFFSET finish
-;;;	CALL WriteString
-				; not really necessary
-
 
 				over:
 	
