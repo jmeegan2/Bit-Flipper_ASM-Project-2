@@ -11,7 +11,7 @@ INCLUDELIB	Irvine32.lib
 ExitProcess PROTO, dwExitCode:DWORD
 
 ;SYMBOLIC CONSTANTS 
-NUMBER_OF_BITS = 1d
+;NUMBER_OF_BITS = 1d
 
 
 
@@ -39,7 +39,7 @@ bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
 ;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
-sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
+;sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
 number7			byte  "7", 0
 number6			byte  "6", 0
 number5         byte  "5", 0
@@ -81,13 +81,14 @@ Press5			byte    "Press the '5' key to shift the bit in position 5.",0
 Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 Colon			byte    ": ",0 
-userEntry		byte	?
+userEntry	dword	?
+;loopOneTest byte 1d
 bitZero			byte	" 0 ",0
 ;foregroundColorCounter		BYTE	2
 ;foregroundColorCounter2		BYTE	2
 ;sampleZero				byte    " 0 ",0
 
-bit7			BYTE	0, 1
+bit7			BYTE	0,1
 bit6			BYTE	0, 1	
 bit5			BYTE	0, 1		
 bit4			BYTE	0, 1	
@@ -95,6 +96,7 @@ bit3			BYTE	0, 1
 bit2			BYTE	0, 1	
 bit1			BYTE	0, 1	
 bit0			BYTE	0, 1	
+finish			byte "finish", 0Dh, 0Ah, 0
 
 ; CODE SEGMENT
 .code
@@ -471,9 +473,44 @@ call crlf
 mov edx, offset press7
 call writestring
 call crlf
-mov edx, offset colon
+mov edx, offset colon	
 call writestring 
-;trying something out 
+CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
+; this will load EAX with the unsigned integer reflecting input from keyboard
+mov ecx, eax
+
+
+TestingLoop_Begin:
+	
+CMP  eax, 1
+JZ equalTo
+JC lessThan
+;JMP greaterThan
+
+equalTo:
+mov edX, offset [bit1 + 1]
+call writeDEC
+call crlf
+jmp over
+
+lessThan:
+	MOV EdX, OFFSET finish
+	CALL WriteString
+	jmp over
+;;	greaterThan:
+	;MOV EDX, OFFSET finish
+;;;	CALL WriteString
+				; not really necessary
+
+
+				over:
+	
+LOOP TestingLoop_Begin
+	;CALL Delay			;Not needed at present moment
+	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
+	JMP InfiniteLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
+									
+	;trying something out 
 ;MOVZX EAX, [bit2 + 1]	
 ;call writedec
 ;MOVzx ECX, [bit2 + 1]	
@@ -481,12 +518,6 @@ call writestring
 ;call crlf
 ;mov edx, offset userEntry	;just a ":" displayed
 ;call writestring
-CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
-	CALL Delay
-;	MOV EAX, 	1							; load EAX with the number of milliseconds to stall
-	JMP InfiniteLoopBegin				; Jump back to the 'endlessLoopBegin' label. Told to put in endless loop
-									
-	
 main endp
 ;Preserve this 
 		END main
