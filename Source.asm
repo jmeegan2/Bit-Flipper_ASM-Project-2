@@ -309,8 +309,10 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring
-
- mov  eax,3
+										;This is where the color changing occurs 
+ mov  eax,3								;black(1), white(2), brown(3), yellow(4), blue(5), green(6),
+										;cyan(7), red(8), magenta(9), gray(10), lightBlue(11), lightGreen(12), 
+										;lightCyan(13), lightRed(14), lightMagenta(15), and lightGray(16)
       call SetTextColor
 MOVZX EAX, [bit7 + 0]		; 0
 	CALL WriteChar
