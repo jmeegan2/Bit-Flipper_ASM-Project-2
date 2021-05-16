@@ -519,12 +519,18 @@ TestingLoop_Begin:
 	
 CMP  eax, 1
 JZ equalTo
-
+jmp		over				;find jump instruction that allows it to go to the next number
 equalTo:
 movzx eax, [bit1 + 1]
 call writeChar
 call crlf
+cmp eax, 2
+jz equalTo2
 jmp over
+equalTo2:
+movzx eax, [bit2 + 1]
+call writechar
+call crlf
 
 				over:
 	
