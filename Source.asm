@@ -514,27 +514,34 @@ CALL ReadDec				;allows user to input a value , the display will not refresh unt
 ; this will load EAX with the unsigned integer reflecting input from keyboard
 mov ecx, eax
 
-
 TestingLoop_Begin:
 	
-CMP  eax, 1
-JZ equalTo
-jmp		over				;find jump instruction that allows it to go to the next number
+CMP  eax, 0
+JNZ equalTo
+;mov ecx, eax
+;cmp eax, 1
+;JZ equalTo1
+				;find jump instruction that allows it to go to the next number
 equalTo:
-movzx eax, [bit1 + 1]
+movzx eax, [bit0 + 2]			;should be zero
 call writeChar
-call crlf
-cmp eax, 2
-jz equalTo2
 jmp over
-equalTo2:
-movzx eax, [bit2 + 1]
-call writechar
-call crlf
 
-				over:
+;equalTo1:
+;movzx eax, [bit1 + 1]			;should be 1
+;call writeChar
+;jmp over
+	;I can move the over function out of the loop so as to not make it print characters nonstop.
+
+;MOV EDX, OFFSET valueEqualToFive
+;	CALL WriteString
+;	JMP over
+
+				
 	
 LOOP TestingLoop_Begin
+over:
+	
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in endless loop
