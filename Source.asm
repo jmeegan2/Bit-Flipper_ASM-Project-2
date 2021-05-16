@@ -514,7 +514,7 @@ CALL ReadDec				;allows user to input a value , the display will not refresh unt
 ; this will load EAX with the unsigned integer reflecting input from keyboard
 mov ecx, eax
 
-TestingLoop_Begin:
+TestingBitZeroLoop_Begin:
 	
 CMP  eax, 0
 JNZ equalTo
@@ -539,7 +539,7 @@ jmp over
 
 				
 	
-LOOP TestingLoop_Begin
+LOOP TestingBitZeroLoop_Begin
 over:
 	
 	;CALL Delay			;Not needed at present moment
