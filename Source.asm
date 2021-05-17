@@ -517,7 +517,7 @@ mov ecx, eax
 TestingBitZeroLoop_Begin:
 	
 CMP  eax, 0
-JNz equalTo
+Jnz equalTo
 equalTo:
 MOVzx eax, bit0
 inc bit0
