@@ -95,7 +95,7 @@ bit4			BYTE	"01010",0
 bit3			BYTE	"01010",0
 bit2			BYTE	"01010",0
 bit1			BYTE	"01010",0
-bit0			BYTE	"01010",0
+bit0			BYTE	0, 1, 0, 1, 0
 ;finish			byte "finish", 0Dh, 0Ah, 0      not currently in use 
 
 ; CODE SEGMENT
@@ -413,7 +413,7 @@ call writestring
 mov  eax,3
       call SetTextColor
 MOVZX EAX, [bit0 + 0]		; 0
-	CALL WriteChar
+	CALL WriteDec
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -518,28 +518,10 @@ TestingBitZeroLoop_Begin:
 	
 CMP  eax, 0
 Jz equalTo
-;mov ecx, eax
-;cmp eax, 1
-;JZ equalTo1
-				;find jump instruction that allows it to go to the next number
 equalTo:
-INC bit0
-
-;movzx eax, [bit0 + 2]			;should be zero
-;call writeChar
-jmp over
-
-;equalTo1:
-;movzx eax, [bit1 + 1]			;should be 1
-;call writeChar
-;jmp over
-	;I can move the over function out of the loop so as to not make it print characters nonstop.
-
-;MOV EDX, OFFSET valueEqualToFive
-;	CALL WriteString
-;	JMP over
-
-				
+MOVzx eax, bit0
+inc bit0
+jmp over				
 	
 LOOP TestingBitZeroLoop_Begin
 over:
