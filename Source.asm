@@ -517,14 +517,16 @@ mov ecx, eax
 TestingBitZeroLoop_Begin:
 	
 CMP  eax, 0
-JNZ equalTo
+Jz equalTo
 ;mov ecx, eax
 ;cmp eax, 1
 ;JZ equalTo1
 				;find jump instruction that allows it to go to the next number
 equalTo:
-movzx eax, [bit0 + 2]			;should be zero
-call writeChar
+INC bit0
+
+;movzx eax, [bit0 + 2]			;should be zero
+;call writeChar
 jmp over
 
 ;equalTo1:
