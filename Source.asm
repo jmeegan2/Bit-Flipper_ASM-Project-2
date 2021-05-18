@@ -95,7 +95,7 @@ bit4			BYTE	"01010",0
 bit3			BYTE	"01010",0
 bit2			BYTE	"01010",0
 bit1			BYTE	"01010",0
-bit0			BYTE	0, 1, 0, 1, 0
+bit0			BYTE	 ?
 ;finish			byte "finish", 0Dh, 0Ah, 0      not currently in use 
 
 ; CODE SEGMENT
@@ -412,8 +412,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit0 + 0]		; 0
-	CALL WriteDec
+call WriteBit0
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -514,16 +513,16 @@ CALL ReadDec				;allows user to input a value , the display will not refresh unt
 ; this will load EAX with the unsigned integer reflecting input from keyboard
 mov ecx, eax
 
-TestingBitZeroLoop_Begin:
+;TestingBitZeroLoop_Begin:
 	
-CMP  eax, 0
-Jnz equalTo
-equalTo:
-MOVzx eax, bit0
-inc bit0
-jmp over				
+;CMP  eax, 0
+;Jz equalTo
+;equalTo:
+;MOVzx eax, bit0
+;inc bit0
+;jmp over				
 	
-LOOP TestingBitZeroLoop_Begin
+;LOOP TestingBitZeroLoop_Begin
 over:
 	
 	;CALL Delay			;Not needed at present moment
@@ -540,4 +539,12 @@ over:
 ;call writestring
 main endp
 ;Preserve this 
+WriteBit0 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit0
+	;mov EBX, 1									; for WriteBinB()
+	; Show the bitfield on the screen with a neat label.
+	call Writedec
+	ret
+WriteBit0 ENDP
 		END main
