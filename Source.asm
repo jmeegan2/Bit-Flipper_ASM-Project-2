@@ -511,9 +511,15 @@ CMP  eax, 0
 Jz equalTo0
 jmp over0
 equalTo0:
-MOVzx eax, bit0
-inc bit0
-jmp over0				
+cmp bit0, 00000000b
+Jz equalTo0_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+JMP greaterThan0_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+equalTo0_2:
+mov bit0, 00000001b
+jmp over0
+greaterThan0_2:
+mov bit0, 00000000b
+jmp over0		
 	
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
 over0:
@@ -522,9 +528,15 @@ CMP  eax, 1
 Jz equalTo1
 jmp over1
 equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+cmp bit1, 00000000b
+Jz equalTo1_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+equalTo1_2:
+mov bit1, 00000001b
+jmp over1
+greaterThan1_2:
+mov bit1, 00000000b
+jmp over1			
 	
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
@@ -533,9 +545,15 @@ CMP  eax, 2
 Jz equalTo2
 jmp over2
 equalTo2:
-MOVzx eax, bit1
-inc bit2
-jmp over2				
+cmp bit2, 00000000b
+Jz equalTo2_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+JMP greaterThan2_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+equalTo2_2:
+mov bit2, 00000001b
+jmp over2
+greaterThan2_2:
+mov bit2, 00000000b
+jmp over2	
 	
 LOOP TestingBitTwoLoop_Begin				;End of conditional loop
 	over2:
@@ -544,9 +562,15 @@ CMP  eax, 3
 Jz equalTo3
 jmp over3
 equalTo3:
-MOVzx eax, bit3
-inc bit3
-jmp over3				
+cmp bit3, 00000000b
+Jz equalTo3_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+JMP greaterThan3_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+equalTo3_2:
+mov bit3, 00000001b
+jmp over3
+greaterThan3_2:
+mov bit3, 00000000b
+jmp over3			
 	
 LOOP TestingBitThreeLoop_Begin				;End of conditional loop
 	over3:
@@ -555,9 +579,15 @@ CMP  eax, 4
 Jz equalTo4
 jmp over4
 equalTo4:
-MOVzx eax, bit4
-inc bit4
-jmp over4				
+cmp bit4, 00000000b
+Jz equalTo4_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+JMP greaterThan4_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+equalTo4_2:
+mov bit4, 00000001b
+jmp over4
+greaterThan4_2:
+mov bit4, 00000000b
+jmp over4		
 	
 LOOP TestingBitFourLoop_Begin				;End of conditional loop
 	over4:
