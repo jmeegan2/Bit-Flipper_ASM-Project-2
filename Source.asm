@@ -1,5 +1,5 @@
 ;ATTENTION
-;Currently working on loops to change the bit values upon the user entering a value (skip to line 519 to continue 5/14)
+;Currently working on changing the colors upon the user entering choose of bit to flip 5/18
 ; EXTERNAL DEPENDENCIES
 INCLUDE		Irvine32.inc
 INCLUDELIB	Irvine32.lib
@@ -12,8 +12,7 @@ INCLUDELIB	Irvine32.lib
 ExitProcess PROTO, dwExitCode:DWORD
 
 ;SYMBOLIC CONSTANTS 
-;NUMBER_OF_BITS = 1d
-
+;May need to add something here, possibly for the color changing , high probability 
 
 
 ; DATA SEGMENT
@@ -39,8 +38,6 @@ tShapeConnectorRight		EQU		185d	; 185 is the base-10 ASCII code for a t shape co
 bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended L shape
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
-;numberOne					EQU		49d		; 49 is the base-10 ASCII code for the number one		
-;sampleText					BYTE	"This is the sample text that shows in different colors.", 0Dh, 0Ah, 0
 number7			byte  "7", 0
 number6			byte  "6", 0
 number5         byte  "5", 0
@@ -82,12 +79,6 @@ Press5			byte    "Press the '5' key to shift the bit in position 5.",0
 Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 Colon			byte    ": ",0 
-userEntry	dword	?
-;loopOneTest byte 1d
-bitZero			byte	" 0 ",0
-;foregroundColorCounter		BYTE	2
-;foregroundColorCounter2		BYTE	2
-;sampleZero				byte    " 0 ",0
 bit7			BYTE	?
 bit6			BYTE	?
 bit5			BYTE	?	
@@ -96,7 +87,7 @@ bit3			BYTE	?
 bit2			BYTE	?
 bit1			BYTE	?
 bit0			BYTE	?
-;finish			byte "finish", 0Dh, 0Ah, 0      not currently in use 
+
 
 ; CODE SEGMENT
 .code
@@ -168,7 +159,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number7
+mov edx, offset number7				;Numerical value displayed 
 call writestring
 mov edx,offset spaceC
 call writestring
@@ -177,7 +168,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number6
+mov edx, offset number6				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -186,7 +177,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number5
+mov edx, offset number5				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -195,7 +186,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number4
+mov edx, offset number4				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -204,7 +195,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number3
+mov edx, offset number3				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -213,7 +204,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number2
+mov edx, offset number2				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -222,7 +213,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number1
+mov edx, offset number1				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -231,7 +222,7 @@ mov edx, offset straightLineD
 call writestring
 mov edx, offset spaceC
 call writestring
-mov edx, offset number0
+mov edx, offset number0				;Numerical value displayed 
 call writestring
 mov edx, offset spaceC
 call writestring	
@@ -512,7 +503,7 @@ Jz equalTo0
 jmp over0
 equalTo0:
 cmp bit0, 00000000b
-Jz equalTo0_2				;The 0_2 means if it is equal to 0 than it will go into another loop to test what the current value
+Jz equalTo0_2				;The 0_2 means if it is equal to 0 than it will go into another part of the loop to test what the current value
 JMP greaterThan0_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo0_2:
 mov bit0, 00000001b
@@ -529,7 +520,7 @@ Jz equalTo1
 jmp over1
 equalTo1:
 cmp bit1, 00000000b
-Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another loop to test what the current value
+Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another part of the loop to test what the current value
 JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo1_2:
 mov bit1, 00000001b
@@ -537,16 +528,16 @@ jmp over1
 greaterThan1_2:
 mov bit1, 00000000b
 jmp over1			
-	
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
+
 TestingBitTwoLoop_Begin:					;Conditional loop for bit2
 CMP  eax, 2
 Jz equalTo2
 jmp over2
 equalTo2:
 cmp bit2, 00000000b
-Jz equalTo2_2				;The 2_2 means if it is equal to 2 than it will go into another loop to test what the current value
+Jz equalTo2_2				;The 2_2 means if it is equal to 2 than it will go into another part of the loop to test what the current value
 JMP greaterThan2_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo2_2:
 mov bit2, 00000001b
@@ -563,7 +554,7 @@ Jz equalTo3
 jmp over3
 equalTo3:
 cmp bit3, 00000000b
-Jz equalTo3_2				;The 3_2 means if it is equal to 3 than it will go into another loop to test what the current value
+Jz equalTo3_2				;The 3_2 means if it is equal to 3 than it will go into another part of the loop to test what the current value
 JMP greaterThan3_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo3_2:
 mov bit3, 00000001b
@@ -580,7 +571,7 @@ Jz equalTo4
 jmp over4
 equalTo4:
 cmp bit4, 00000000b
-Jz equalTo4_2				;The 4_2 means if it is equal to 4 than it will go into another loop to test what the current value
+Jz equalTo4_2				;The 4_2 means if it is equal to 4 than it will go into another part of the loop to test what the current value
 JMP greaterThan4_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo4_2:
 mov bit4, 00000001b
@@ -597,7 +588,7 @@ Jz equalTo5
 jmp over5
 equalTo5:
 cmp bit5, 00000000b
-Jz equalTo5_2				;The 5_2 means if it is equal to 5 than it will go into another loop to test what the current value
+Jz equalTo5_2				;The 5_2 means if it is equal to 5 than it will go into another part of the loop to test what the current value
 JMP greaterThan5_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo5_2:
 mov bit5, 00000001b
@@ -614,7 +605,7 @@ Jz equalTo6
 jmp over6
 equalTo6:
 cmp bit6, 00000000b
-Jz equalTo6_2				;The 6_2 means if it is equal to 6 than it will go into another loop to test what the current value
+Jz equalTo6_2				;The 6_2 means if it is equal to 6 than it will go into another part of the loop to test what the current value
 JMP greaterThan6_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo6_2:
 mov bit6, 00000001b
@@ -632,7 +623,7 @@ Jz equalTo7
 jmp over7
 equalTo7:
 cmp bit7, 00000000b
-Jz equalTo7_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo7_2				;The 7_2 means if it is equal to 7 than it will go into another part of the loop to test what the current value
 JMP greaterThan7_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo7_2:
 mov bit7, 00000001b
@@ -640,67 +631,56 @@ jmp over7
 greaterThan7_2:
 mov bit7, 00000000b
 jmp over7
-
-;MOVzx eax, bit7
-;inc bit7
-;jmp over7				
-	
 LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	over7:
-	
-	
-	;CALL Delay			;Not needed at present moment
-	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
+
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in infinite loop
 									
 
 main endp
 ;Preserve this 
-WriteBit0 PROC USES EAX EBX EDX
+WriteBit0 PROC USES EAX EBX EDX										;Write procedure for bit0
 	; Load registers with appropriate display information.
 	movzx EAX, bit0
-	
-	; Show the bitfield on the screen with a neat label.
 	call Writedec
 	ret
 WriteBit0 ENDP
-WriteBit1 PROC USES EAX EBX EDX
-	; Load registers with appropriate display information.
+WriteBit1 PROC USES EAX EBX EDX										;Write procedure for bit1
 	movzx EAX, bit1
 	call Writedec
 	ret
 WriteBit1 ENDP
-WriteBit2 PROC USES EAX EBX EDX
+WriteBit2 PROC USES EAX EBX EDX										;Write procedure for bit2
 	; Load registers with appropriate display information.
 	movzx EAX, bit2
 	call Writedec
 	ret
-WriteBit2 ENDP
-WriteBit3 PROC USES EAX EBX EDX
+WriteBit2 ENDP	
+WriteBit3 PROC USES EAX EBX EDX									;Write procedure for bit3
 	; Load registers with appropriate display information.
 	movzx EAX, bit3
 	call Writedec
 	ret
 WriteBit3 ENDP
-WriteBit4 PROC USES EAX EBX EDX
+WriteBit4 PROC USES EAX EBX EDX									;Write procedure for bit4						
 	; Load registers with appropriate display information.
 	movzx EAX, bit4
 	call Writedec
 	ret
 WriteBit4 ENDP
-WriteBit5 PROC USES EAX EBX EDX
+WriteBit5 PROC USES EAX EBX EDX									;Write procedure for bit5
 	; Load registers with appropriate display information.
 	movzx EAX, bit5
 	call Writedec
 	ret
 WriteBit5 ENDP
-WriteBit6 PROC USES EAX EBX EDX
+WriteBit6 PROC USES EAX EBX EDX								    ;Write procedure for bit6
 	; Load registers with appropriate display information.
 	movzx EAX, bit6
 	call Writedec
 	ret
 WriteBit6 ENDP
-WriteBit7 PROC USES EAX EBX EDX
+WriteBit7 PROC USES EAX EBX EDX									;Write procedure for bit7
 	; Load registers with appropriate display information.
 	movzx EAX, bit7
 	call Writedec
