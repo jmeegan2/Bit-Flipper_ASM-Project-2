@@ -547,71 +547,62 @@ jmp over2
 LOOP TestingBitTwoLoop_Begin
 	over2:
 TestingBitThreeLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+CMP  eax, 3
+Jz equalTo3
+jmp over3
+equalTo3:
+MOVzx eax, bit3
+inc bit3
+jmp over3				
 	
-LOOP TestingBitThreeOneLoop_Begin
-	over1:
+LOOP TestingBitThreeLoop_Begin
+	over3:
 TestingBitFourLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+CMP  eax, 4
+Jz equalTo4
+jmp over4
+equalTo4:
+MOVzx eax, bit4
+inc bit4
+jmp over4				
 	
-LOOP TestingBitOLoop_Begin
-	over1:
-TestingBitOneLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+LOOP TestingBitFourLoop_Begin
+	over4:
+TestingBitFiveLoop_Begin:
+CMP  eax, 5
+Jz equalTo5
+jmp over5
+equalTo5:
+MOVzx eax, bit5
+inc bit5
+jmp over5				
 	
-LOOP TestingBitOneLoop_Begin
-	over1:
-TestingBitOneLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+LOOP TestingBitFiveLoop_Begin
+	over5:
+TestingBitSixLoop_Begin:
+CMP  eax, 6
+Jz equalTo6
+jmp over6
+equalTo6:
+MOVzx eax, bit6
+inc bit6
+jmp over6				
 	
-LOOP TestingBitOneLoop_Begin
-	over1:
-TestingBitOneLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+LOOP TestingBitSixLoop_Begin
+	over6:
+TestingBitSevenLoop_Begin:
+CMP  eax, 7
+Jz equalTo7
+jmp over7
+equalTo7:
+MOVzx eax, bit7
+inc bit7
+jmp over7				
 	
-LOOP TestingBitOneLoop_Begin
-	over1:
-	TestingBitOneLoop_Begin:
-CMP  eax, 1
-Jz equalTo1
-jmp over1
-equalTo1:
-MOVzx eax, bit1
-inc bit1
-jmp over1				
+LOOP TestingBitSevenLoop_Begin
+	over7:
 	
-LOOP TestingBitOneLoop_Begin
-	over1:
+	
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in endless loop
