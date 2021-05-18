@@ -511,32 +511,112 @@ mov edx, offset colon	        ;": "
 call writestring 
 CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
 ; this will load EAX with the unsigned integer reflecting input from keyboard
-mov ecx, eax
 
-;TestingBitZeroLoop_Begin:
+mov ecx, eax
+TestingBitZeroLoop_Begin:
+CMP  eax, 0
+Jz equalTo0
+jmp over0
+equalTo0:
+MOVzx eax, bit0
+inc bit0
+jmp over0				
 	
-;CMP  eax, 0
-;Jz equalTo
-;equalTo:
-;MOVzx eax, bit0
-;inc bit0
-;jmp over				
+LOOP TestingBitZeroLoop_Begin
+over0:
+TestingBitOneLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
 	
-;LOOP TestingBitZeroLoop_Begin
-over:
+LOOP TestingBitOneLoop_Begin
+	over1:
+TestingBitTwoLoop_Begin:
+CMP  eax, 2
+Jz equalTo2
+jmp over2
+equalTo2:
+MOVzx eax, bit1
+inc bit2
+jmp over2				
 	
+LOOP TestingBitTwoLoop_Begin
+	over2:
+TestingBitThreeLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitThreeOneLoop_Begin
+	over1:
+TestingBitFourLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitOLoop_Begin
+	over1:
+TestingBitOneLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitOneLoop_Begin
+	over1:
+TestingBitOneLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitOneLoop_Begin
+	over1:
+TestingBitOneLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitOneLoop_Begin
+	over1:
+	TestingBitOneLoop_Begin:
+CMP  eax, 1
+Jz equalTo1
+jmp over1
+equalTo1:
+MOVzx eax, bit1
+inc bit1
+jmp over1				
+	
+LOOP TestingBitOneLoop_Begin
+	over1:
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in endless loop
 									
-	;trying something out 
-;MOVZX EAX, [bit2 + 1]	
-;call writedec
-;MOVzx ECX, [bit2 + 1]	
-;call writedec
-;call crlf
-;mov edx, offset userEntry	;just a ":" displayed
-;call writestring
+
 main endp
 ;Preserve this 
 WriteBit0 PROC USES EAX EBX EDX
