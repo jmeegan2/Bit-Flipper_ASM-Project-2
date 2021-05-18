@@ -310,11 +310,11 @@ call writestring
 mov edx, offset spaceC
 call writestring
 										;This is where the color changing occurs 
- mov  eax,3								;black(1), white(2), brown(3), yellow(4), blue(5), green(6),
+										;black(1), white(2), brown(3), yellow(4), blue(5), green(6),
 										;cyan(7), red(8), magenta(9), gray(10), lightBlue(11), lightGreen(12), 
-										;lightCyan(13), lightRed(14), lightMagenta(15), and lightGray(16)
+	 mov  eax,3							;lightCyan(13), lightRed(14), lightMagenta(15), and lightGray(16)
       call SetTextColor
-call WriteBit7
+call WriteBit7							;Bit Code Value 7 displayed here 
 	 mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -327,7 +327,7 @@ mov edx, offset spaceC
 call writestring
  mov  eax,3
       call SetTextColor
-call WriteBit6
+call WriteBit6							;Bit Code Value 6 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -340,7 +340,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-	  call WriteBit5
+	  call WriteBit5					;Bit Code Value 5 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -353,7 +353,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-call WriteBit4
+call WriteBit4								;Bit Code Value 4 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -366,7 +366,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-call WriteBit3
+call WriteBit3								;Bit Code Value 3 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -379,7 +379,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-call WriteBit2
+call WriteBit2							;Bit Code Value 2 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -392,7 +392,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-call WriteBit1
+call WriteBit1							;Bit Code Value 1 displayed here 
 mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -405,7 +405,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-call WriteBit0
+call WriteBit0							;Bit Code Value 0 displayed here 
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -626,7 +626,7 @@ jmp over6
 	
 LOOP TestingBitSixLoop_Begin				;End of conditional loop
 	over6:
-TestingBitSevenLoop_Begin:					;Conditional loop for bit7
+TestingBitSevenLoop_Begin:					;Conditional loop for bit7 
 CMP  eax, 7
 Jz equalTo7
 jmp over7
@@ -651,7 +651,7 @@ LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	
 	;CALL Delay			;Not needed at present moment
 	;MOV EAX, 	1							; load EAX with the number of milliseconds to stall
-	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in endless loop
+	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in infinite loop
 									
 
 main endp
