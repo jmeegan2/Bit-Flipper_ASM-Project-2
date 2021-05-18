@@ -88,14 +88,14 @@ bitZero			byte	" 0 ",0
 ;foregroundColorCounter		BYTE	2
 ;foregroundColorCounter2		BYTE	2
 ;sampleZero				byte    " 0 ",0
-bit7			BYTE	"01010",0
-bit6			BYTE	"01010",0
-bit5			BYTE	"01010",0	
-bit4			BYTE	"01010",0
-bit3			BYTE	"01010",0
-bit2			BYTE	"01010",0
-bit1			BYTE	"01010",0
-bit0			BYTE	 ?
+bit7			BYTE	?
+bit6			BYTE	?
+bit5			BYTE	?	
+bit4			BYTE	?
+bit3			BYTE	?
+bit2			BYTE	?
+bit1			BYTE	?
+bit0			BYTE	?
 ;finish			byte "finish", 0Dh, 0Ah, 0      not currently in use 
 
 ; CODE SEGMENT
@@ -314,8 +314,7 @@ call writestring
 										;cyan(7), red(8), magenta(9), gray(10), lightBlue(11), lightGreen(12), 
 										;lightCyan(13), lightRed(14), lightMagenta(15), and lightGray(16)
       call SetTextColor
-MOVZX EAX, [bit7 + 0]		; 0
-	CALL WriteChar
+call WriteBit7
 	 mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -328,8 +327,7 @@ mov edx, offset spaceC
 call writestring
  mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit6 + 0]		; 0
-	CALL WriteChar
+call WriteBit6
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -342,8 +340,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit5 + 0]		; 0
-	CALL WriteChar
+	  call WriteBit5
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -356,8 +353,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit4 + 0]		; 0
-	CALL WriteChar
+call WriteBit4
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -370,8 +366,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit3 + 0]		; 0
-	CALL WriteChar
+call WriteBit3
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -384,8 +379,7 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit2 + 0]		; 0
-	CALL WriteChar
+call WriteBit2
  mov eax,7
       call SetTextColor
 mov edx, offset spaceC
@@ -398,9 +392,8 @@ mov edx, offset spaceC
 call writestring
 mov  eax,3
       call SetTextColor
-MOVZX EAX, [bit1 + 0]		; 0
-	CALL WriteChar
- mov eax,7
+call WriteBit1
+mov eax,7
       call SetTextColor
 mov edx, offset spaceC
 call writestring
@@ -613,9 +606,51 @@ main endp
 WriteBit0 PROC USES EAX EBX EDX
 	; Load registers with appropriate display information.
 	movzx EAX, bit0
-	;mov EBX, 1									; for WriteBinB()
+	
 	; Show the bitfield on the screen with a neat label.
 	call Writedec
 	ret
 WriteBit0 ENDP
+WriteBit1 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit1
+	call Writedec
+	ret
+WriteBit1 ENDP
+WriteBit2 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit2
+	call Writedec
+	ret
+WriteBit2 ENDP
+WriteBit3 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit3
+	call Writedec
+	ret
+WriteBit3 ENDP
+WriteBit4 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit4
+	call Writedec
+	ret
+WriteBit4 ENDP
+WriteBit5 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit5
+	call Writedec
+	ret
+WriteBit5 ENDP
+WriteBit6 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit6
+	call Writedec
+	ret
+WriteBit6 ENDP
+WriteBit7 PROC USES EAX EBX EDX
+	; Load registers with appropriate display information.
+	movzx EAX, bit7
+	call Writedec
+	ret
+WriteBit7 ENDP
 		END main
