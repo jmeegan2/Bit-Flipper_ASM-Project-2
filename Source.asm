@@ -512,7 +512,7 @@ Jz equalTo0
 jmp over0
 equalTo0:
 cmp bit0, 00000000b
-Jz equalTo0_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo0_2				;The 0_2 means if it is equal to 0 than it will go into another loop to test what the current value
 JMP greaterThan0_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo0_2:
 mov bit0, 00000001b
@@ -529,7 +529,7 @@ Jz equalTo1
 jmp over1
 equalTo1:
 cmp bit1, 00000000b
-Jz equalTo1_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another loop to test what the current value
 JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo1_2:
 mov bit1, 00000001b
@@ -546,7 +546,7 @@ Jz equalTo2
 jmp over2
 equalTo2:
 cmp bit2, 00000000b
-Jz equalTo2_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo2_2				;The 2_2 means if it is equal to 2 than it will go into another loop to test what the current value
 JMP greaterThan2_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo2_2:
 mov bit2, 00000001b
@@ -563,7 +563,7 @@ Jz equalTo3
 jmp over3
 equalTo3:
 cmp bit3, 00000000b
-Jz equalTo3_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo3_2				;The 3_2 means if it is equal to 3 than it will go into another loop to test what the current value
 JMP greaterThan3_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo3_2:
 mov bit3, 00000001b
@@ -580,7 +580,7 @@ Jz equalTo4
 jmp over4
 equalTo4:
 cmp bit4, 00000000b
-Jz equalTo4_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo4_2				;The 4_2 means if it is equal to 4 than it will go into another loop to test what the current value
 JMP greaterThan4_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo4_2:
 mov bit4, 00000001b
@@ -597,7 +597,7 @@ Jz equalTo5
 jmp over5
 equalTo5:
 cmp bit5, 00000000b
-Jz equalTo5_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo5_2				;The 5_2 means if it is equal to 5 than it will go into another loop to test what the current value
 JMP greaterThan5_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo5_2:
 mov bit5, 00000001b
@@ -614,7 +614,7 @@ Jz equalTo6
 jmp over6
 equalTo6:
 cmp bit6, 00000000b
-Jz equalTo6_2				;The 7_2 means if it is equal to 7 than it will go into another loop to test what the current value
+Jz equalTo6_2				;The 6_2 means if it is equal to 6 than it will go into another loop to test what the current value
 JMP greaterThan6_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo6_2:
 mov bit6, 00000001b
