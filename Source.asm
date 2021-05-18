@@ -513,7 +513,7 @@ CALL ReadDec				;allows user to input a value , the display will not refresh unt
 ; this will load EAX with the unsigned integer reflecting input from keyboard
 
 mov ecx, eax
-TestingBitZeroLoop_Begin:
+TestingBitZeroLoop_Begin:				;Conditional loop for bit0
 CMP  eax, 0
 Jz equalTo0
 jmp over0
@@ -522,9 +522,9 @@ MOVzx eax, bit0
 inc bit0
 jmp over0				
 	
-LOOP TestingBitZeroLoop_Begin
+LOOP TestingBitZeroLoop_Begin				;End of conditional loop
 over0:
-TestingBitOneLoop_Begin:
+TestingBitOneLoop_Begin:					;Conditional loop for bit1
 CMP  eax, 1
 Jz equalTo1
 jmp over1
@@ -533,9 +533,9 @@ MOVzx eax, bit1
 inc bit1
 jmp over1				
 	
-LOOP TestingBitOneLoop_Begin
+LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
-TestingBitTwoLoop_Begin:
+TestingBitTwoLoop_Begin:					;Conditional loop for bit2
 CMP  eax, 2
 Jz equalTo2
 jmp over2
@@ -544,9 +544,9 @@ MOVzx eax, bit1
 inc bit2
 jmp over2				
 	
-LOOP TestingBitTwoLoop_Begin
+LOOP TestingBitTwoLoop_Begin				;End of conditional loop
 	over2:
-TestingBitThreeLoop_Begin:
+TestingBitThreeLoop_Begin:					;Conditional loop for bit3
 CMP  eax, 3
 Jz equalTo3
 jmp over3
@@ -555,9 +555,9 @@ MOVzx eax, bit3
 inc bit3
 jmp over3				
 	
-LOOP TestingBitThreeLoop_Begin
+LOOP TestingBitThreeLoop_Begin				;End of conditional loop
 	over3:
-TestingBitFourLoop_Begin:
+TestingBitFourLoop_Begin:					;Conditional loop for bit4
 CMP  eax, 4
 Jz equalTo4
 jmp over4
@@ -566,9 +566,9 @@ MOVzx eax, bit4
 inc bit4
 jmp over4				
 	
-LOOP TestingBitFourLoop_Begin
+LOOP TestingBitFourLoop_Begin				;End of conditional loop
 	over4:
-TestingBitFiveLoop_Begin:
+TestingBitFiveLoop_Begin:						;Conditional loop for bit5
 CMP  eax, 5
 Jz equalTo5
 jmp over5
@@ -577,9 +577,9 @@ MOVzx eax, bit5
 inc bit5
 jmp over5				
 	
-LOOP TestingBitFiveLoop_Begin
+LOOP TestingBitFiveLoop_Begin			;End of conditional loop
 	over5:
-TestingBitSixLoop_Begin:
+TestingBitSixLoop_Begin:				;Conditional loop for bit6
 CMP  eax, 6
 Jz equalTo6
 jmp over6
@@ -588,9 +588,9 @@ MOVzx eax, bit6
 inc bit6
 jmp over6				
 	
-LOOP TestingBitSixLoop_Begin
+LOOP TestingBitSixLoop_Begin				;End of conditional loop
 	over6:
-TestingBitSevenLoop_Begin:
+TestingBitSevenLoop_Begin:					;Conditional loop for bit7
 CMP  eax, 7
 Jz equalTo7
 jmp over7
@@ -599,7 +599,7 @@ MOVzx eax, bit7
 inc bit7
 jmp over7				
 	
-LOOP TestingBitSevenLoop_Begin
+LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	over7:
 	
 	
