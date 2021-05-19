@@ -398,7 +398,7 @@ mov  eax,3
       call SetTextColor
 call WriteBit0							;Bit Code Value 0 displayed here 
  mov eax,7
-      call SetTextColor
+     call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
@@ -526,6 +526,8 @@ equalTo1_2:
 mov bit1, 00000001b
 jmp over1
 greaterThan1_2:
+mov  eax,2
+      call SetTextColor
 mov bit1, 00000000b
 jmp over1			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
@@ -636,7 +638,7 @@ LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in infinite loop
 									;In order to do the color switching properly call 1 after zero and put the inc text color by one 
-									;therefor the text next time it is written which will be as a one will have incremented and changed 
+									;therefor the text
 main endp
 ;Preserve this 
 WriteBit0 PROC USES EAX EBX EDX										;Write procedure for bit0
