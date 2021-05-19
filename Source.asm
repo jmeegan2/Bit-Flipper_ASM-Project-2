@@ -635,8 +635,8 @@ LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	over7:
 
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in infinite loop
-									
-
+									;In order to do the color switching properly call 1 after zero and put the inc text color by one 
+									;therefor the text next time it is written which will be as a one will have incremented and changed 
 main endp
 ;Preserve this 
 WriteBit0 PROC USES EAX EBX EDX										;Write procedure for bit0
