@@ -490,9 +490,12 @@ equalTo0_2:
 mov bit0, 00000001b
 jmp over0
 greaterThan0_2:
+mov eax, 2
+call setTextColor
 mov bit0, 00000000b
+mov eax, 7
+call setTextColor
 jmp over0		
-	
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
 over0:
 TestingBitOneLoop_Begin:					;Conditional loop for bit1
@@ -507,8 +510,7 @@ equalTo1_2:
 mov bit1, 00000001b
 jmp over1
 greaterThan1_2:
-mov  eax,2
-      call SetTextColor
+
 mov bit1, 00000000b
 jmp over1			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
