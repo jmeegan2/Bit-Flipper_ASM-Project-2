@@ -25,14 +25,6 @@ cornerRight					EQU		187d	; 187 is the base-10 ASCII code for open ended right c
 straightLinesDown			EQU		186d	; 186 is the base-10 ASCII code for straight double line down
 tShapeConnectorLeft			EQU		204d	; 204 is the base-10 ASCII code for t shape open connector on left side 
 fourWayConnector			EQU		206d	; 206 is the base-10 ASCII code for four way connector with open ends
-letterSalph					EQU		83d		; 83 is the base-10 ASCII code for a letter S
-letterFalph					EQU		70d		; 70 is the base-10 ASCII code for a letter F
-letterZalph					EQU		90d		; 90 is the base-10 ASCII code for a letter Z
-letterRalph					EQU		82d		; 82 is the base-10 ASCII code for a letter R
-letterEalph					EQU		69d		; 69 is the base-10 ASCII code for a letter E
-letterAalph					EQU		65d		; 65 is the base-10 ASCII code for a letter A
-letterPalph					EQU		80d		; 80 is the base-10 ASCII code for a letter P
-letterCalph					EQU		67d		; 67 is the base-10 ASCII code for a letter C
 spaceCommand				EQU     32d		; 32 is the base-10 ASCII code for a space
 tShapeConnectorRight		EQU		185d	; 185 is the base-10 ASCII code for a t shape connector on the right side 
 bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended L shape
@@ -53,14 +45,6 @@ flatLines		BYTE	2 DUP(theDoubleLinesSymbol), 0
 tConnector		BYTE	1 DUP(tShapeConnector),0
 cornerR			BYTE	1 DUP(cornerRight), 0
 straightLineD	BYTE    1 DUP(straightLinesDown), 0
-letterS			BYTE	1 DUP(letterSalph), 0
-letterF			BYTE	1 DUP(letterFalph), 0
-letterZ			BYTE	1 DUP(letterZalph), 0
-letterR			BYTE	1 DUP(letterRalph), 0
-letterE			BYTE	1 DUP(letterEalph), 0
-letterA			BYTE	1 DUP(letterAalph), 0
-letterP			BYTE	1 DUP(letterPalph), 0
-letterC			BYTE	1 DUP(letterCalph), 0
 spaceC			byte	1 DUP(spaceCommand), 0
 tShapeConnectorL BYTE   1 DUP(tShapeConnectorLeft), 0
 fourWayC		BYTE	1 DUP(fourWayConnector), 0
@@ -299,11 +283,8 @@ mov edx, offset straightLineD
 call writestring 
 ;Bit Value for bit 7
 mov edx, offset spaceC
-call writestring
-										;This is where the color changing occurs 
-										;black(1), white(2), brown(3), yellow(4), blue(5), green(6),
-										;cyan(7), red(8), magenta(9), gray(10), lightBlue(11), lightGreen(12), 
-	 mov  eax,3							;lightCyan(13), lightRed(14), lightMagenta(15), and lightGray(16)
+call writestring					 
+	 mov  eax,3							
       call SetTextColor
 call WriteBit7							;Bit Code Value 7 displayed here 
 	 mov eax,7
