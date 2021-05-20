@@ -71,7 +71,8 @@ bit3			BYTE	?
 bit2			BYTE	?
 bit1			BYTE	?
 bit0			BYTE	?
-
+currentColors	BYTE  lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan
+;currentColors1	BYTE  lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan,lightCyan
 
 ; CODE SEGMENT
 .code
@@ -375,8 +376,8 @@ call writestring
 ;Bit Value for bit 0
 mov edx, offset spaceC
 call writestring
-mov  eax,3
-      call SetTextColor
+movzx eax,[currentColors + 0]
+call setTextColor
 call WriteBit0							;Bit Code Value 0 displayed here 
  mov eax,7
      call SetTextColor
@@ -490,11 +491,9 @@ equalTo0_2:
 mov bit0, 00000001b
 jmp over0
 greaterThan0_2:
-mov eax, 2
-call setTextColor
+call nextColor
 mov bit0, 00000000b
-mov eax, 7
-call setTextColor
+
 jmp over0		
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
 over0:
@@ -510,8 +509,9 @@ equalTo1_2:
 mov bit1, 00000001b
 jmp over1
 greaterThan1_2:
-
+call nextColor
 mov bit1, 00000000b
+
 jmp over1			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
@@ -671,4 +671,53 @@ WriteBit7 PROC USES EAX EBX EDX									;Write procedure for bit7
 	call Writedec
 	ret
 WriteBit7 ENDP
+nextColor PROC
+    PUSHAD
+    
+    ; Get current color from array
+    MOVZX EBX, currentColors[EAX]
+
+    ; Next color with basically switch case
+    ; LIGHTCYAN, LIGHTGREEN, LIGHTRED, YELLOW, WHITE, repeat
+    
+    ; Check if it's lightCyan
+    CMP EBX, lightCyan
+    ; Skip changing to lightGreen if it isn't lightCyan
+    JNE notCyan
+        MOV currentColors[EAX], lightGreen
+    notCyan:
+    
+    ; Check if it's lightGreen
+    CMP EBX, lightGreen
+    ; Skip changing to lightRed if it isn't lightGreen
+    JNE notGreen
+        MOV currentColors[EAX], lightRed
+    notGreen:
+    
+    ; Check if it's lightRed
+    CMP EBX, lightRed
+    ; Skip changing to yellow if it isn't lightRed
+    JNE notRed
+        MOV currentColors[EAX], yellow
+    notRed:
+    
+    ; Check if it's yellow
+    CMP EBX, yellow
+    ; Skip changing to white if it isn't yellow
+    JNE notYellow
+        MOV currentColors[EAX], white
+    notYellow:
+
+    ; Check if it's white
+    CMP EBX, white
+    ; Skip changing to lightCyan if it isn't white
+    JNE notWhite
+        MOV currentColors[EAX], lightCyan
+    notWhite:
+    
+    POPAD
+    RET
+nextColor ENDP
+
+
 		END main
