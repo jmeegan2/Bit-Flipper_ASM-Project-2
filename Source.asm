@@ -74,6 +74,12 @@ bit0			BYTE	?
 currentColors	BYTE  lightCyan
 currentColors0	BYTE  lightCyan
 currentColors1	BYTE  lightCyan
+currentColors2	BYTE  lightCyan
+currentColors3	BYTE  lightCyan
+currentColors4	BYTE  lightCyan
+currentColors5	BYTE  lightCyan
+currentColors6	BYTE  lightCyan
+currentColors7	BYTE  lightCyan
 
 
 ; CODE SEGMENT
@@ -287,7 +293,7 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring					 
-movzx eax,currentColors
+movzx eax,currentColors7
 call setTextColor
 call WriteBit7							;Bit Code Value 7 displayed here 
 	 mov eax,7
@@ -300,7 +306,7 @@ call writestring
 ;Bit Value for bit 6
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors
+movzx eax,currentColors6
 call setTextColor
 call WriteBit6							;Bit Code Value 6 displayed here 
  mov eax,7
@@ -313,7 +319,7 @@ call writestring
 ;Bit Value for bit 5
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors
+movzx eax,currentColors5
 call setTextColor
 	  call WriteBit5					;Bit Code Value 5 displayed here 
  mov eax,7
@@ -326,7 +332,7 @@ call writestring
 ;Bit Value for bit 4
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors 
+movzx eax,currentColors4
 call setTextColor
 call WriteBit4								;Bit Code Value 4 displayed here 
  mov eax,7
@@ -339,7 +345,7 @@ call writestring
 ;Bit Value for bit 3
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors 
+movzx eax,currentColors3
 call setTextColor
 call WriteBit3								;Bit Code Value 3 displayed here 
  mov eax,7
@@ -352,7 +358,7 @@ call writestring
 ;Bit Value for bit 2
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors 
+movzx eax,currentColors2 
 call setTextColor
 call WriteBit2							;Bit Code Value 2 displayed here 
  mov eax,7
@@ -496,7 +502,7 @@ equalTo0_2:
     greaterThan0_2:
     CALL nextColor0
     mov bit0, 00000000b
-    jmp over7		
+    jmp over0		
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
     over0:
 TestingBitOneLoop_Begin:					;Conditional loop for bit1
@@ -506,14 +512,14 @@ TestingBitOneLoop_Begin:					;Conditional loop for bit1
 equalTo1:
     cmp bit1, 00000000b
     Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another part of the loop to test what the current value
-    JMP greaterThan1_extended			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo1_2:
     mov bit1, 00000001b
     jmp over1
-greaterThan1_extended:
-    call nextColor1
+greaterThan1_2:
+    call nextColor0
     mov bit1, 00000000b
-    jmp over7			
+    jmp over1			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
 
@@ -529,7 +535,7 @@ equalTo2:
     mov bit2, 00000001b
     jmp over2
 greaterThan2_2:
-    call nextColor
+    call nextColor0
     mov bit2, 00000000b
     jmp over2	
 	
@@ -547,7 +553,7 @@ equalTo3_2:
     mov bit3, 00000001b
     jmp over3
 greaterThan3_2:
-    call nextColor
+    call nextColor0
     mov bit3, 00000000b
     jmp over7			
 	
@@ -565,7 +571,7 @@ equalTo4_2:
     mov bit4, 00000001b
     jmp over4
 greaterThan4_2:
-    call nextColor
+    call nextColor0
     mov bit4, 00000000b
     jmp over7		
 	
@@ -583,7 +589,7 @@ equalTo5_2:
     mov bit5, 00000001b
     jmp over5
 greaterThan5_2:
-    call nextColor
+    call nextColor0
     mov bit5, 00000000b
     jmp over7
 
@@ -601,7 +607,7 @@ equalTo6_2:
     mov bit6, 00000001b
     jmp over6
 greaterThan6_2:
-    call nextColor
+    call nextColor0
     mov bit6, 00000000b
 jmp over7
 			
@@ -620,7 +626,7 @@ equalTo7_2:
     mov bit7, 00000001b
     jmp over7
 greaterThan7_2:
-    call nextColor
+    call nextColor0
     mov bit7, 00000000b
     jmp over7
 LOOP TestingBitSevenLoop_Begin				;End of conditional loop
