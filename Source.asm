@@ -87,7 +87,6 @@ main PROC
 
 InfiniteLoopBegin:                      ;Infinite Loop beings here
 
-call crlf
 mov edx, offset cornerL                             ;Display of Graph begins 
 call writestring
 mov edx, offset flatlines
