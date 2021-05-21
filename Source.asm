@@ -1,5 +1,3 @@
-;ATTENTION
-;Currently working on changing the colors upon the user entering choose of bit to flip 5/18
 ; EXTERNAL DEPENDENCIES
 INCLUDE		Irvine32.inc
 INCLUDELIB	Irvine32.lib
@@ -11,12 +9,9 @@ INCLUDELIB	Irvine32.lib
 ; PROTOTYPES
 ExitProcess PROTO, dwExitCode:DWORD
 
-;SYMBOLIC CONSTANTS 
-;May need to add something here, possibly for the color changing , high probability 
-
-
 ; DATA SEGMENT
 .data
+
 numberZero					EQU		48d		; 48 is the base-10 ASCII code for the number zero
 cornerLeft					EQU		201d	; 201 is the base-10 ASCII code for open ended left corner
 theDoubleLinesSymbol		EQU		205d	; 205 is the base-10 ASCII code for "="
@@ -30,6 +25,7 @@ tShapeConnectorRight		EQU		185d	; 185 is the base-10 ASCII code for a t shape co
 bottomCornerLeft			EQU     200d	; 200 is the base-10 ASCII code for a open ended L shape
 bottomCornerRight			EQU		188d	; 188 is the base-10 ASCII code for a open ended backwards L shape
 InvertedTConnector			EQU		202d	; 202 is the base-10 ASCII code for a inverted open ended capital T
+
 number7			byte  "7", 0
 number6			byte  "6", 0
 number5         byte  "5", 0
@@ -40,6 +36,7 @@ number1        byte	  "1", 0
 number0         byte  "0", 0
 BitPosition		BYTE " BIT POSITION ", 0
 BitCode			BYTE "     BIT CODE ", 0
+
 cornerL			BYTE	1	DUP(cornerLeft), 0
 flatLines		BYTE	2 DUP(theDoubleLinesSymbol), 0
 tConnector		BYTE	1 DUP(tShapeConnector),0
@@ -53,6 +50,7 @@ bottomCornerL	BYTE	1 DUP(bottomCornerLeft), 0
 bottomCornerR	BYTE	1 DUP(bottomCornerRight), 0
 invertedTC		BYTE	1 DUP(invertedTConnector), 0
 numberZeroD		BYTE	1 DUP(numberZero), 0
+
 pressKey		byte	"Press a key corresponding to the bit you would like to cycle...",0
 Press0			byte    "Press the '0' key to shift the bit in position 0.",0
 Press1			byte    "Press the '1' key to shift the bit in position 1.",0
@@ -63,6 +61,7 @@ Press5			byte    "Press the '5' key to shift the bit in position 5.",0
 Press6			byte    "Press the '6' key to shift the bit in position 6.",0
 Press7			byte    "Press the '7' key to shift the bit in position 7.",0
 Colon			byte    ": ",0 
+
 bit7			BYTE	?
 bit6			BYTE	?
 bit5			BYTE	?	
@@ -71,15 +70,15 @@ bit3			BYTE	?
 bit2			BYTE	?
 bit1			BYTE	?
 bit0			BYTE	?
-currentColors	BYTE  lightCyan
-currentColors0	BYTE  lightCyan
-currentColors1	BYTE  lightCyan
-currentColors2	BYTE  lightCyan
-currentColors3	BYTE  lightCyan
-currentColors4	BYTE  lightCyan
-currentColors5	BYTE  lightCyan
-currentColors6	BYTE  lightCyan
-currentColors7	BYTE  lightCyan
+                  
+currentColors0	BYTE  lightCyan                         ;Current Color for bit0
+currentColors1	BYTE  lightCyan                         ;Current Color for bit1
+currentColors2	BYTE  lightCyan                         ;Current Color for bit2
+currentColors3	BYTE  lightCyan                         ;Current Color for bit3
+currentColors4	BYTE  lightCyan                         ;Current Color for bit4
+currentColors5	BYTE  lightCyan                         ;Current Color for bit5
+currentColors6	BYTE  lightCyan                         ;Current Color for bit6
+currentColors7	BYTE  lightCyan                         ;Current Color for bit7
 
 
 ; CODE SEGMENT
@@ -87,6 +86,7 @@ currentColors7	BYTE  lightCyan
 main PROC
 
 InfiniteLoopBegin:                      ;Infinite Loop beings here
+
 call crlf
 mov edx, offset cornerL                             ;Display of Graph begins 
 call writestring
@@ -99,7 +99,7 @@ call writestring
 call writestring
 call writestring
 MOV EDX, OFFSET tConnector
-	CALL WriteString 
+CALL WriteString 
 mov edx, offset flatlines
 call writestring
 call writestring
@@ -279,99 +279,114 @@ mov edx, offset tShapeConnectorR
 call writestring 
 call crlf
 ;line 4 of display starts here
-;mov edx, offset
+
 
 ;////////////////////////////////////
 ;BitCode display value is here 
 ;////////////////////////////////////
+
 mov edx, offset straightLineD
 call writestring 
-mov edx ,offset BitCode					;Text display of BIT CODE 
+mov edx ,offset BitCode					;Text display of "BIT CODE"
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 7
+
 mov edx, offset spaceC
 call writestring					 
-movzx eax,currentColors7
+movzx eax,currentColors7                ;Current Color for bit7
 call setTextColor
 call WriteBit7							;Bit Code Value 7 displayed here 
-	 mov eax,7
-      call SetTextColor
+mov eax,7
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 6
-mov edx, offset spaceC
+
+MOV edx, offset spaceC
 call writestring
-movzx eax,currentColors6
+movzx eax,currentColors6               ;Current Color for bit6
 call setTextColor
 call WriteBit6							;Bit Code Value 6 displayed here 
- mov eax,7
-      call SetTextColor
+mov eax,7
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 5
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors5
+movzx eax,currentColors5                ;Current Color for bit5
 call setTextColor
-	  call WriteBit5					;Bit Code Value 5 displayed here 
- mov eax,7
-      call SetTextColor
+call WriteBit5					;Bit Code Value 5 displayed here 
+mov eax,7
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 4
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors4
+movzx eax,currentColors4                    ;Current Color for bit4
 call setTextColor
 call WriteBit4								;Bit Code Value 4 displayed here 
  mov eax,7
-      call SetTextColor
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 3
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors3
+movzx eax,currentColors3                    ;Current Color for bit3
 call setTextColor
 call WriteBit3								;Bit Code Value 3 displayed here 
  mov eax,7
-      call SetTextColor
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 2
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors2 
+movzx eax,currentColors2                ;Current Color for bit2
 call setTextColor
 call WriteBit2							;Bit Code Value 2 displayed here 
- mov eax,7
-      call SetTextColor
+mov eax,7
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 1
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors1 
+movzx eax,currentColors1                ;Current Color for bit1
 call setTextColor
 call WriteBit1							;Bit Code Value 1 displayed here 
 mov eax,7
@@ -381,23 +396,27 @@ call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
+
 ;Bit Value for bit 0
+
 mov edx, offset spaceC
 call writestring
-movzx eax,currentColors0 
+movzx eax,currentColors0                ;Current Color for bit0
 call setTextColor
 call WriteBit0							;Bit Code Value 0 displayed here 
- mov eax,7
-     call SetTextColor
+mov eax,7
+call SetTextColor
 mov edx, offset spaceC
 call writestring
 call writestring
 mov edx, offset straightLineD
 call writestring 
 call crlf
+
 ;/////////////////////////////////
-;END of display for bit value 
+;END of display for BIT CODE 
 ;////////////////////////////////
+
 ;5th line of display
 mov edx, offset bottomCornerL
 call writestring
@@ -453,7 +472,9 @@ mov edx, offset bottomCornerR
 call writestring
 call crlf
 call crlf
+
 ;Start of visual display that asks the user what bit he wants to flip
+
 mov edx, offset pressKey        ;"Press a key corresponding to the bit you would like to cycle..."
 call writestring
 call crlf
@@ -483,11 +504,17 @@ call writestring
 call crlf
 mov edx, offset colon	        ;": "
 call writestring 
-CALL ReadChar					; Get input from user
+                                        ;Part where the user will enter a number which will cause a bit to flip 
+        CALL ReadChar					; Get input from user
 		MOVZX EAX, AL					; Keeps only the ASCII code
 		SUB AL, 48						; Converts ASCII code to the number
 		CALL ClrScr				
-mov ecx, eax
+        mov ecx, eax
+
+;///////////////////////////////////////////
+;    Conditional Loop Testing Occurs here 
+;//////////////////////////////////////////
+
 TestingBitZeroLoop_Begin:				;Conditional loop for bit0
     CMP  eax, 0
     Jz equalTo0
@@ -500,11 +527,12 @@ equalTo0_2:
     mov bit0, 00000001b
     jmp over0
     greaterThan0_2:
-    CALL nextColor0
+    CALL nextColor0                         ;Color change occurs here
     mov bit0, 00000000b
     jmp over0		
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
     over0:
+
 TestingBitOneLoop_Begin:					;Conditional loop for bit1
     CMP  eax, 1
     Jz equalTo1
@@ -517,7 +545,7 @@ equalTo1_2:
     mov bit1, 00000001b
     jmp over1
 greaterThan1_2:
-    call nextColor0
+    call nextColor0                         ;Color change occurs here
     mov bit1, 00000000b
     jmp over1			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
@@ -535,12 +563,12 @@ equalTo2:
     mov bit2, 00000001b
     jmp over2
 greaterThan2_2:
-    call nextColor0
+    call nextColor0                         ;Color change occurs here
     mov bit2, 00000000b
     jmp over2	
-	
 LOOP TestingBitTwoLoop_Begin				;End of conditional loop
 	over2:
+
 TestingBitThreeLoop_Begin:					;Conditional loop for bit3
     CMP  eax, 3
     Jz equalTo3
@@ -553,12 +581,12 @@ equalTo3_2:
     mov bit3, 00000001b
     jmp over3
 greaterThan3_2:
-    call nextColor0
+    call nextColor0                         ;Color change occurs here
     mov bit3, 00000000b
-    jmp over7			
-	
+    jmp over3			
 LOOP TestingBitThreeLoop_Begin				;End of conditional loop
 	over3:
+
 TestingBitFourLoop_Begin:					;Conditional loop for bit4
     CMP  eax, 4
     Jz equalTo4
@@ -571,12 +599,12 @@ equalTo4_2:
     mov bit4, 00000001b
     jmp over4
 greaterThan4_2:
-    call nextColor0
+    call nextColor0                         ;Color change occurs here
     mov bit4, 00000000b
-    jmp over7		
-	
+    jmp over4		
 LOOP TestingBitFourLoop_Begin				;End of conditional loop
 	over4:
+
 TestingBitFiveLoop_Begin:						;Conditional loop for bit5
     CMP  eax, 5
     Jz equalTo5
@@ -589,12 +617,12 @@ equalTo5_2:
     mov bit5, 00000001b
     jmp over5
 greaterThan5_2:
-    call nextColor0
+    call nextColor0                     ;Color change occurs here
     mov bit5, 00000000b
-    jmp over7
-
+    jmp over5
 LOOP TestingBitFiveLoop_Begin			;End of conditional loop
 	over5:
+
 TestingBitSixLoop_Begin:				;Conditional loop for bit6
     CMP  eax, 6
     Jz equalTo6
@@ -607,13 +635,12 @@ equalTo6_2:
     mov bit6, 00000001b
     jmp over6
 greaterThan6_2:
-    call nextColor0
+    call nextColor0                         ;Color change occurs here
     mov bit6, 00000000b
-jmp over7
-			
-	
+jmp over6
 LOOP TestingBitSixLoop_Begin				;End of conditional loop
 	over6:
+
 TestingBitSevenLoop_Begin:					;Conditional loop for bit7 
     CMP  eax, 7
     Jz equalTo7
@@ -626,65 +653,78 @@ equalTo7_2:
     mov bit7, 00000001b
     jmp over7
 greaterThan7_2:
-    call nextColor0
+    call nextColor0                          ;Color change occurs here
     mov bit7, 00000000b
     jmp over7
 LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	over7:
 
+;///////////////////////////////////////////
+;     END of Conditional Loop Testing
+;//////////////////////////////////////////
+
 	JMP InfiniteLoopBegin				; Jump back to the 'InfiniteLoopBegin' label. Rubric states to put in infinite loop
-									;In order to do the color switching properly call 1 after zero and put the inc text color by one 
-									;therefor the text
+									
 main endp
-;Preserve this 
+;///////////////////////////////////////////
+;               PROCEDURES
+;///////////////////////////////////////////
 WriteBit0 PROC USES EAX EBX EDX										;Write procedure for bit0
 	; Load registers with appropriate display information.
 	movzx EAX, bit0
 	call Writedec
 	ret
 WriteBit0 ENDP
+
 WriteBit1 PROC USES EAX EBX EDX										;Write procedure for bit1
 	movzx EAX, bit1
 	call Writedec
 	ret
 WriteBit1 ENDP
+
 WriteBit2 PROC USES EAX EBX EDX										;Write procedure for bit2
 	; Load registers with appropriate display information.
 	movzx EAX, bit2
 	call Writedec
 	ret
 WriteBit2 ENDP	
+
 WriteBit3 PROC USES EAX EBX EDX									;Write procedure for bit3
 	; Load registers with appropriate display information.
 	movzx EAX, bit3
 	call Writedec
 	ret
 WriteBit3 ENDP
+
 WriteBit4 PROC USES EAX EBX EDX									;Write procedure for bit4						
 	; Load registers with appropriate display information.
 	movzx EAX, bit4
 	call Writedec
 	ret
 WriteBit4 ENDP
+
 WriteBit5 PROC USES EAX EBX EDX									;Write procedure for bit5
 	; Load registers with appropriate display information.
 	movzx EAX, bit5
 	call Writedec
 	ret
 WriteBit5 ENDP
+
 WriteBit6 PROC USES EAX EBX EDX								    ;Write procedure for bit6
 	; Load registers with appropriate display information.
 	movzx EAX, bit6
 	call Writedec
 	ret
 WriteBit6 ENDP
+
 WriteBit7 PROC USES EAX EBX EDX									;Write procedure for bit7
 	; Load registers with appropriate display information.
 	movzx EAX, bit7
 	call Writedec
 	ret
 WriteBit7 ENDP
-nextColor0 PROC
+
+nextColor0 PROC                             ;Color changing procedure for when the bit is flipped back to Zero (0)
     PUSHAD
     
     ; Get current color from array
@@ -732,5 +772,8 @@ nextColor0 PROC
     RET
 nextColor0 ENDP
 
-
-		END main
+;///////////////////////////////////////////
+;            END OF PROCEDURES
+;///////////////////////////////////////////
+   
+   END main            ;End of program
