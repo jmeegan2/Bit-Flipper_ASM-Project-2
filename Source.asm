@@ -684,53 +684,6 @@ WriteBit7 PROC USES EAX EBX EDX									;Write procedure for bit7
 	call Writedec
 	ret
 WriteBit7 ENDP
-nextColor PROC
-    PUSHAD
-    
-    ; Get current color from array
-    MOVZX EBX, currentColors[EAX]
-
-    ; Next color with basically switch case
-    ; LIGHTCYAN, LIGHTGREEN, LIGHTRED, YELLOW, WHITE, repeat
-    
-    ; Check if it's lightCyan
-    CMP EBX, lightCyan
-    ; Skip changing to lightGreen if it isn't lightCyan
-    JNE notCyan
-        MOV currentColors[EAX], lightGreen
-    notCyan:
-    
-    ; Check if it's lightGreen
-    CMP EBX, lightGreen
-    ; Skip changing to lightRed if it isn't lightGreen
-    JNE notGreen
-        MOV currentColors[EAX], lightRed
-    notGreen:
-    
-    ; Check if it's lightRed
-    CMP EBX, lightRed
-    ; Skip changing to yellow if it isn't lightRed
-    JNE notRed
-        MOV currentColors[EAX], yellow
-    notRed:
-    
-    ; Check if it's yellow
-    CMP EBX, yellow
-    ; Skip changing to white if it isn't yellow
-    JNE notYellow
-        MOV currentColors[EAX], white
-    notYellow:
-
-    ; Check if it's white
-    CMP EBX, white
-    ; Skip changing to lightCyan if it isn't white
-    JNE notWhite
-        MOV currentColors[EAX], lightCyan
-    notWhite:
-    
-    POPAD
-    RET
-nextColor ENDP
 nextColor0 PROC
     PUSHAD
     
@@ -778,53 +731,6 @@ nextColor0 PROC
     POPAD
     RET
 nextColor0 ENDP
-nextColor1 PROC
-    PUSHAD
-    
-    ; Get current color from array
-    MOVZX EBX, currentColors1[EAX]
-
-    ; Next color with basically switch case
-    ; LIGHTCYAN, LIGHTGREEN, LIGHTRED, YELLOW, WHITE, repeat
-    
-    ; Check if it's lightCyan
-    CMP EBX, lightCyan
-    ; Skip changing to lightGreen if it isn't lightCyan
-    JNE notCyan
-        MOV currentColors1[EAX], lightGreen
-    notCyan:
-    
-    ; Check if it's lightGreen
-    CMP EBX, lightGreen
-    ; Skip changing to lightRed if it isn't lightGreen
-    JNE notGreen
-        MOV currentColors1[EAX], lightRed
-    notGreen:
-    
-    ; Check if it's lightRed
-    CMP EBX, lightRed
-    ; Skip changing to yellow if it isn't lightRed
-    JNE notRed
-        MOV currentColors1[EAX], yellow
-    notRed:
-    
-    ; Check if it's yellow
-    CMP EBX, yellow
-    ; Skip changing to white if it isn't yellow
-    JNE notYellow
-        MOV currentColors1[EAX], white
-    notYellow:
-
-    ; Check if it's white
-    CMP EBX, white
-    ; Skip changing to lightCyan if it isn't white
-    JNE notWhite
-        MOV currentColors1[EAX], lightCyan
-    notWhite:
-    
-    POPAD
-    RET
-nextColor1 ENDP
 
 
 		END main
