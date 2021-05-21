@@ -514,9 +514,7 @@ equalTo1_2:
     jmp over1
 greaterThan1_2:
     call nextColor1
-   
     mov bit1, 00000000b
-
     jmp over7			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
