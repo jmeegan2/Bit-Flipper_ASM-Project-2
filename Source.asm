@@ -73,6 +73,7 @@ bit1			BYTE	?
 bit0			BYTE	?
 currentColors	BYTE  lightCyan,lightGreen,lightRed,yellow,white
 currentColors0	BYTE  lightCyan,lightGreen,lightRed,yellow,white
+currentColors1	BYTE  lightCyan,lightGreen,lightRed,yellow,white
 
 
 ; CODE SEGMENT
@@ -364,7 +365,7 @@ call writestring
 ;Bit Value for bit 1
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,[currentColors1 + 0]
 call setTextColor
 call WriteBit1							;Bit Code Value 1 displayed here 
 mov eax,7
@@ -476,157 +477,156 @@ call writestring
 call crlf
 mov edx, offset colon	        ;": "
 call writestring 
-CALL ReadDec				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
+CALL ReadChar					; Get input from user
+		MOVZX EAX, AL					; Keeps only the ASCII code
+		SUB AL, 48						; Converts ASCII code to the number
+		CALL ClrScr				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
 ; this will load EAX with the unsigned integer reflecting input from keyboard
 
 mov ecx, eax
 TestingBitZeroLoop_Begin:				;Conditional loop for bit0
-CMP  eax, 0
-Jz equalTo0
-jmp over0
+    CMP  eax, 0
+    Jz equalTo0
+    jmp over0
 equalTo0:
-cmp bit0, 00000000b
-Jz equalTo0_2				;The 0_2 means if it is equal to 0 than it will go into another part of the loop to test what the current value
-JMP greaterThan0_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit0, 00000000b
+    Jz equalTo0_2				;The 0_2 means if it is equal to 0 than it will go into another part of the loop to test what the current value
+    JMP greaterThan0_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo0_2:
-mov bit0, 00000001b
-jmp over0
-greaterThan0_2:
-CALL nextColor0
-mov bit0, 00000000b
-
-
-mov eax, 0
-
-jmp over7		
+    mov bit0, 00000001b
+    jmp over0
+    greaterThan0_2:
+    CALL nextColor0
+    mov bit0, 00000000b
+    jmp over7		
 LOOP TestingBitZeroLoop_Begin				;End of conditional loop
-over0:
+    over0:
 TestingBitOneLoop_Begin:					;Conditional loop for bit1
-CMP  eax, 1
-Jz equalTo1
-jmp over1
+    CMP  eax, 1
+    Jz equalTo1
+    jmp over1
 equalTo1:
-cmp bit1, 00000000b
-Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another part of the loop to test what the current value
-JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit1, 00000000b
+    Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another part of the loop to test what the current value
+    JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo1_2:
-call nextColor
-mov bit1, 00000001b
-jmp over1
+    mov bit1, 00000001b
+    jmp over1
 greaterThan1_2:
-call nextColor
-mov bit1, 00000000b
+    call nextColor1
+   
+    mov bit1, 00000000b
 
-jmp over1			
+    jmp over7			
 LOOP TestingBitOneLoop_Begin				;End of conditional loop
 	over1:
 
 TestingBitTwoLoop_Begin:					;Conditional loop for bit2
-CMP  eax, 2
-Jz equalTo2
-jmp over2
+    CMP  eax, 2
+    Jz equalTo2
+    jmp over2
 equalTo2:
-cmp bit2, 00000000b
-Jz equalTo2_2				;The 2_2 means if it is equal to 2 than it will go into another part of the loop to test what the current value
-JMP greaterThan2_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
-equalTo2_2:
-mov bit2, 00000001b
-jmp over2
+    cmp bit2, 00000000b
+    Jz equalTo2_2				;The 2_2 means if it is equal to 2 than it will go into another part of the loop to test what the current value
+    JMP greaterThan2_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    equalTo2_2:
+    mov bit2, 00000001b
+    jmp over2
 greaterThan2_2:
-call nextColor
-mov bit2, 00000000b
-jmp over2	
+    call nextColor
+    mov bit2, 00000000b
+    jmp over2	
 	
 LOOP TestingBitTwoLoop_Begin				;End of conditional loop
 	over2:
 TestingBitThreeLoop_Begin:					;Conditional loop for bit3
-CMP  eax, 3
-Jz equalTo3
-jmp over3
+    CMP  eax, 3
+    Jz equalTo3
+    jmp over3
 equalTo3:
-cmp bit3, 00000000b
-Jz equalTo3_2				;The 3_2 means if it is equal to 3 than it will go into another part of the loop to test what the current value
-JMP greaterThan3_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit3, 00000000b
+    Jz equalTo3_2				;The 3_2 means if it is equal to 3 than it will go into another part of the loop to test what the current value
+    JMP greaterThan3_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo3_2:
-mov bit3, 00000001b
-jmp over3
+    mov bit3, 00000001b
+    jmp over3
 greaterThan3_2:
-call nextColor
-mov bit3, 00000000b
-jmp over3			
+    call nextColor
+    mov bit3, 00000000b
+    jmp over7			
 	
 LOOP TestingBitThreeLoop_Begin				;End of conditional loop
 	over3:
 TestingBitFourLoop_Begin:					;Conditional loop for bit4
-CMP  eax, 4
-Jz equalTo4
-jmp over4
+    CMP  eax, 4
+    Jz equalTo4
+    jmp over4
 equalTo4:
-cmp bit4, 00000000b
-Jz equalTo4_2				;The 4_2 means if it is equal to 4 than it will go into another part of the loop to test what the current value
-JMP greaterThan4_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit4, 00000000b
+    Jz equalTo4_2				;The 4_2 means if it is equal to 4 than it will go into another part of the loop to test what the current value
+    JMP greaterThan4_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo4_2:
-mov bit4, 00000001b
-jmp over4
+    mov bit4, 00000001b
+    jmp over4
 greaterThan4_2:
-call nextColor
-mov bit4, 00000000b
-jmp over4		
+    call nextColor
+    mov bit4, 00000000b
+    jmp over7		
 	
 LOOP TestingBitFourLoop_Begin				;End of conditional loop
 	over4:
 TestingBitFiveLoop_Begin:						;Conditional loop for bit5
-CMP  eax, 5
-Jz equalTo5
-jmp over5
+    CMP  eax, 5
+    Jz equalTo5
+    jmp over5
 equalTo5:
-cmp bit5, 00000000b
-Jz equalTo5_2				;The 5_2 means if it is equal to 5 than it will go into another part of the loop to test what the current value
-JMP greaterThan5_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit5, 00000000b
+    Jz equalTo5_2				;The 5_2 means if it is equal to 5 than it will go into another part of the loop to test what the current value
+    JMP greaterThan5_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo5_2:
-mov bit5, 00000001b
-jmp over5
+    mov bit5, 00000001b
+    jmp over5
 greaterThan5_2:
-call nextColor
-mov bit5, 00000000b
-jmp over5
+    call nextColor
+    mov bit5, 00000000b
+    jmp over7
 
 LOOP TestingBitFiveLoop_Begin			;End of conditional loop
 	over5:
 TestingBitSixLoop_Begin:				;Conditional loop for bit6
-CMP  eax, 6
-Jz equalTo6
-jmp over6
+    CMP  eax, 6
+    Jz equalTo6
+    jmp over6
 equalTo6:
 cmp bit6, 00000000b
-Jz equalTo6_2				;The 6_2 means if it is equal to 6 than it will go into another part of the loop to test what the current value
-JMP greaterThan6_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    Jz equalTo6_2				;The 6_2 means if it is equal to 6 than it will go into another part of the loop to test what the current value
+    JMP greaterThan6_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo6_2:
-mov bit6, 00000001b
-jmp over6
+    mov bit6, 00000001b
+    jmp over6
 greaterThan6_2:
-call nextColor
-mov bit6, 00000000b
-jmp over6
+    call nextColor
+    mov bit6, 00000000b
+jmp over7
 			
 	
 LOOP TestingBitSixLoop_Begin				;End of conditional loop
 	over6:
 TestingBitSevenLoop_Begin:					;Conditional loop for bit7 
-CMP  eax, 7
-Jz equalTo7
-jmp over7
+    CMP  eax, 7
+    Jz equalTo7
+    jmp over7
 equalTo7:
-cmp bit7, 00000000b
-Jz equalTo7_2				;The 7_2 means if it is equal to 7 than it will go into another part of the loop to test what the current value
-JMP greaterThan7_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    cmp bit7, 00000000b
+    Jz equalTo7_2				;The 7_2 means if it is equal to 7 than it will go into another part of the loop to test what the current value
+    JMP greaterThan7_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo7_2:
-mov bit7, 00000001b
-jmp over7
+    mov bit7, 00000001b
+    jmp over7
 greaterThan7_2:
-call nextColor
-mov bit7, 00000000b
-jmp over7
+    call nextColor
+    mov bit7, 00000000b
+    jmp over7
 LOOP TestingBitSevenLoop_Begin				;End of conditional loop
 	over7:
 
@@ -776,6 +776,53 @@ nextColor0 PROC
     POPAD
     RET
 nextColor0 ENDP
+nextColor1 PROC
+    PUSHAD
+    
+    ; Get current color from array
+    MOVZX EBX, currentColors1[EAX]
+
+    ; Next color with basically switch case
+    ; LIGHTCYAN, LIGHTGREEN, LIGHTRED, YELLOW, WHITE, repeat
+    
+    ; Check if it's lightCyan
+    CMP EBX, lightCyan
+    ; Skip changing to lightGreen if it isn't lightCyan
+    JNE notCyan
+        MOV currentColors1[EAX], lightGreen
+    notCyan:
+    
+    ; Check if it's lightGreen
+    CMP EBX, lightGreen
+    ; Skip changing to lightRed if it isn't lightGreen
+    JNE notGreen
+        MOV currentColors1[EAX], lightRed
+    notGreen:
+    
+    ; Check if it's lightRed
+    CMP EBX, lightRed
+    ; Skip changing to yellow if it isn't lightRed
+    JNE notRed
+        MOV currentColors1[EAX], yellow
+    notRed:
+    
+    ; Check if it's yellow
+    CMP EBX, yellow
+    ; Skip changing to white if it isn't yellow
+    JNE notYellow
+        MOV currentColors1[EAX], white
+    notYellow:
+
+    ; Check if it's white
+    CMP EBX, white
+    ; Skip changing to lightCyan if it isn't white
+    JNE notWhite
+        MOV currentColors1[EAX], lightCyan
+    notWhite:
+    
+    POPAD
+    RET
+nextColor1 ENDP
 
 
 		END main
