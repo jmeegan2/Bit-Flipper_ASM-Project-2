@@ -71,9 +71,9 @@ bit3			BYTE	?
 bit2			BYTE	?
 bit1			BYTE	?
 bit0			BYTE	?
-currentColors	BYTE  lightCyan,lightGreen,lightRed,yellow,white
-currentColors0	BYTE  lightCyan,lightGreen,lightRed,yellow,white
-currentColors1	BYTE  lightCyan,lightGreen,lightRed,yellow,white
+currentColors	BYTE  lightCyan
+currentColors0	BYTE  lightCyan
+currentColors1	BYTE  lightCyan
 
 
 ; CODE SEGMENT
@@ -287,7 +287,7 @@ call writestring
 ;Bit Value for bit 7
 mov edx, offset spaceC
 call writestring					 
-movzx eax,[currentColors + 0]
+movzx eax,currentColors
 call setTextColor
 call WriteBit7							;Bit Code Value 7 displayed here 
 	 mov eax,7
@@ -300,7 +300,7 @@ call writestring
 ;Bit Value for bit 6
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,currentColors
 call setTextColor
 call WriteBit6							;Bit Code Value 6 displayed here 
  mov eax,7
@@ -313,7 +313,7 @@ call writestring
 ;Bit Value for bit 5
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,currentColors
 call setTextColor
 	  call WriteBit5					;Bit Code Value 5 displayed here 
  mov eax,7
@@ -326,7 +326,7 @@ call writestring
 ;Bit Value for bit 4
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,currentColors 
 call setTextColor
 call WriteBit4								;Bit Code Value 4 displayed here 
  mov eax,7
@@ -339,7 +339,7 @@ call writestring
 ;Bit Value for bit 3
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,currentColors 
 call setTextColor
 call WriteBit3								;Bit Code Value 3 displayed here 
  mov eax,7
@@ -352,7 +352,7 @@ call writestring
 ;Bit Value for bit 2
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors + 0]
+movzx eax,currentColors 
 call setTextColor
 call WriteBit2							;Bit Code Value 2 displayed here 
  mov eax,7
@@ -365,7 +365,7 @@ call writestring
 ;Bit Value for bit 1
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors1 + 0]
+movzx eax,currentColors1 
 call setTextColor
 call WriteBit1							;Bit Code Value 1 displayed here 
 mov eax,7
@@ -378,7 +378,7 @@ call writestring
 ;Bit Value for bit 0
 mov edx, offset spaceC
 call writestring
-movzx eax,[currentColors0 + 0]
+movzx eax,currentColors0 
 call setTextColor
 call WriteBit0							;Bit Code Value 0 displayed here 
  mov eax,7
@@ -506,11 +506,11 @@ TestingBitOneLoop_Begin:					;Conditional loop for bit1
 equalTo1:
     cmp bit1, 00000000b
     Jz equalTo1_2				;The 1_2 means if it is equal to 1 than it will go into another part of the loop to test what the current value
-    JMP greaterThan1_2			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
+    JMP greaterThan1_extended			;of the loop bit is . If it is 0 than it will be flipped and if its is 1 than it will be flippped to 0.
 equalTo1_2:
     mov bit1, 00000001b
     jmp over1
-greaterThan1_2:
+greaterThan1_extended:
     call nextColor1
     mov bit1, 00000000b
     jmp over7			
