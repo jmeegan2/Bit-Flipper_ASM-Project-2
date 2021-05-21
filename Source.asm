@@ -480,9 +480,7 @@ call writestring
 CALL ReadChar					; Get input from user
 		MOVZX EAX, AL					; Keeps only the ASCII code
 		SUB AL, 48						; Converts ASCII code to the number
-		CALL ClrScr				;allows user to input a value , the display will not refresh until the user enters the selection and hits the enter key
-; this will load EAX with the unsigned integer reflecting input from keyboard
-
+		CALL ClrScr				
 mov ecx, eax
 TestingBitZeroLoop_Begin:				;Conditional loop for bit0
     CMP  eax, 0
